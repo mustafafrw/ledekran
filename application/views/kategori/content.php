@@ -3,11 +3,11 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
                     <div class="filter-widget">
-                        <h4 class="fw-title">Categories</h4>
+                        <h4 class="fw-title">Kategoriler</h4>
                         <ul class="filter-catagories">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Kids</a></li>
+                            <?php foreach($items["categoryList"] as $item) { ?>
+                            <li><a href="<?php echo base_url("kategori/").$item->id; ?>"><?php echo $item->title; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
 

@@ -28,11 +28,17 @@ class Kategori extends CI_Controller {
             array("id" =>$param ), "category"
                  
         );
+         $kategoriListe = $this->main_model->get_all(
+            array(), "id ASC" ,"category"
+                 
+        );
         $items = array(
             "header" => $header,
             "footer" => $footer,
-            "categoryInfo" => $kategori
+            "categoryInfo" => $kategori,
+            "categoryList" =>$kategoriListe
         );
+        
          
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
