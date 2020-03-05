@@ -27,7 +27,7 @@
     <!--========== END app aside -->
 
     <!-- navbar search -->
-    <?php $this->load->view("includes/slider"); ?>
+    <?php $this->load->view("main/slider"); ?>
     <!-- .navbar-search -->
 
     <!-- APP MAIN ==========-->

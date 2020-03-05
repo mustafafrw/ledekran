@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class Main extends CI_Controller {
   public $viewFolder="";
   
   public function __construct() {
       
       parent::__construct();
-      $this->viewFolder = "includes";
-      $this->load->model("product_model");
+      $this->viewFolder = "main";
+      $this->load->model("main_model");
   }
 
     public function index()
@@ -18,13 +18,13 @@ class Product extends CI_Controller {
            
         /** Tablodan Verilerin Getirilmesi.. */
        //veri tabanından type ı head olanları getirdik menu_id ve menu parametereleri
-        $header = $this->product_model->get_all(
+        $header = $this->main_model->get_all(
             array("type" => "head"), "menu_id ASC","menu"
         );
-        $footer = $this->product_model->get_all(
+        $footer = $this->main_model->get_all(
             array("type" => "footer"), "menu_id ASC","menu"
         );
-        $slider = $this->product_model->get_all(
+        $slider = $this->main_model->get_all(
             array(), "id ASC","slider"
         );
         $items = array(
@@ -38,19 +38,4 @@ class Product extends CI_Controller {
 
         $this->load->view("{$viewData->viewFolder}/index", $viewData);
 	}
-        public function headerMenu(){
-            /*$viewData = new stdClass();
-           
-        $items = $this->product_model->get_all(
-            array(
-                  "type"   => $this->db->get("footer"),
-
-            ) 
-        );
-
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->items = $items;
-
-        $this->load->view("{$viewData->viewFolder}/index", $viewData);*/
-        }
 }
