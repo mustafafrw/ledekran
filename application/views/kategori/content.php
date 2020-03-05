@@ -29,25 +29,18 @@
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <img src="http://localhost/mortak/ledekran/includes/img/products/product-1.jpg" alt="">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
+                   
+                         
                                         <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                            <li class="quick-view"><a href="#">Teklif Al</a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
-                                        <div class="catagory-name">Towel</div>
+                                    
                                         <a href="#">
                                             <h5><?php echo $item->title; ?></h5>
                                         </a>
-                                        <div class="product-price">
-                                            $14.00
-                                            <span>$35.00</span>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
