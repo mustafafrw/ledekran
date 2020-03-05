@@ -28,7 +28,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="http://localhost/mortak/ledekran/includes/img/products/product-1.jpg" alt="">
+                                        <img  src="<?php echo $item->thumbnail; ?>" alt="">
                    
                          
                                         <ul>
@@ -48,12 +48,7 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="loading-more">
-                        <i class="icon_loading"></i>
-                        <a href="#">
-                            Loading More
-                        </a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
