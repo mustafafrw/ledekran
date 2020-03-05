@@ -32,11 +32,16 @@ class Kategori extends CI_Controller {
             array(), "id ASC" ,"category"
                  
         );
+          $posts = $this->main_model->get_all(
+            array("category_id" => $param), "post_id ASC","posts"
+        );
+         
         $items = array(
             "header" => $header,
             "footer" => $footer,
             "categoryInfo" => $kategori,
-            "categoryList" =>$kategoriListe
+            "categoryList" =>$kategoriListe,
+            "post"       => $posts
         );
         
          
