@@ -17,6 +17,7 @@ class Product extends CI_Controller {
           $viewData = new stdClass();
            
         /** Tablodan Verilerin Getirilmesi.. */
+       //veri tabanından type ı head olanları getirdik menu_id ve menu parametereleri
         $header = $this->product_model->get_all(
             array("type" => "head"), "menu_id ASC","menu"
         );
