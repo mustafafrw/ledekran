@@ -17,9 +17,9 @@ class Product_model extends CI_Model
     }
 
     /** Tüm Kayıtları bana getirecek olan metot.. */
-    public function get_all($where = array(), $order = "id ASC")
+    public function get_all($where = array(), $order = "id ASC",$tbName)
     {
-        return $this->db->where($where)->order_by($order)->get($this->tableName)->result();
+        return $this->db->where($where)->order_by($order)->get($tbName)->result();
     }
 
     public function add($data = array())

@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1">
                     <div class="footer-widget">
-                        <h5>Bilgasdasdi</h5>
+                        <h5>Bilgi</h5>
                         <ul>
 
                         <?php foreach($items["footer"] as $item) { ?>

@@ -12,7 +12,7 @@
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
-                        +90 544 444 99 64
+                        +90 544 444 99 64X
                     </div>
                 </div>
                 <div class="ht-right">
@@ -64,19 +64,5 @@
             </div>
         </div>
     </header>
-
-    <div class="breacrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Anasayfa</a>
-                        <a href="./shop.html">Dış Mekan Led Ekranlar</a>
-                        <span>Ürün</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
  

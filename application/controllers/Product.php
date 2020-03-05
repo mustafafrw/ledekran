@@ -18,14 +18,18 @@ class Product extends CI_Controller {
            
         /** Tablodan Verilerin Getirilmesi.. */
         $header = $this->product_model->get_all(
-            array("type" => "head"), "menu_id ASC"
+            array("type" => "head"), "menu_id ASC","menu"
         );
         $footer = $this->product_model->get_all(
-            array("type" => "footer"), "menu_id ASC"
+            array("type" => "footer"), "menu_id ASC","menu"
+        );
+        $slider = $this->product_model->get_all(
+            array(), "id ASC","slider"
         );
         $items = array(
             "header" => $header,
-            "footer" => $footer
+            "footer" => $footer,
+            "slider" => $slider
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
