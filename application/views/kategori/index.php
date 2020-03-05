@@ -27,7 +27,7 @@
     <!--========== END app aside -->
 
     <!-- navbar search -->
-    
+    <?php $this->load->view("kategori/content"); ?>
     <!-- .navbar-search -->
 
     <!-- APP MAIN ==========-->
