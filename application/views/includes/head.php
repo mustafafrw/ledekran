@@ -55,7 +55,7 @@
                     <ul data-url="">
                          <?php foreach($items["header"] as $item) { ?>
                         
-                        <li><a href="<?php echo $item->url ?>"><?php echo $item->title?></a></li>                     
+                        <li><a href="<?php echo base_url('').$item->url ?>"><?php echo $item->title?></a></li>                     
                         
                          <?php } ?>
                     </ul>
