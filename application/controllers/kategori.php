@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kategori extends CI_Controller {
-  public $viewFolder="";
+    public $viewFolder="";
   
   public function __construct() {
       
@@ -16,25 +16,21 @@ class Kategori extends CI_Controller {
     }
 
     function index($param){
-        echo $param;
+        $viewData = new stdClass();
+
         $header = $this->main_model->get_all(
             array("type" => "head"), "menu_id ASC","menu"
         );
         $footer = $this->main_model->get_all(
             array("type" => "footer"), "menu_id ASC","menu"
         );
-        $slider = $this->main_model->get_all(
-            array(), "id ASC","slider"
-        );
         $items = array(
             "header" => $header,
-            "footer" => $footer,
-            "slider" => $slider
+            "footer" => $footer
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->items = $items;
-
         $this->load->view("{$viewData->viewFolder}/index", $viewData);
     }
 
