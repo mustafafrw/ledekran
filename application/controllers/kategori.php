@@ -8,11 +8,17 @@ class Kategori extends CI_Controller {
       
       parent::__construct();
       $this->viewFolder = "includes";
-      $this->load->model("product_model");
+      $this->load->model("main_model");
   }
 
-    public function index()
-	{
-        echo 'dalga';
-	}
+    function _remap($param) {
+        $this->index($param);
+    }
+
+    function index($param){
+        echo $param;
+    }
+    /*public function pr($id){
+        echo $id;
+    }*/
 }
