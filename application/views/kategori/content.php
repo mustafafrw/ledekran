@@ -16,8 +16,9 @@
                     <div class="product-show-option">
                         <div class="row">
                             <div class="col-lg-7 col-md-7">
-                                <h3>İç Mekan Led Ekranlar</h3>
-                                <h6>Dış Mekan Led Ekranlar kategorisine hoşgeldiniz</h6>
+                                
+                                <h3><?php echo $items["categoryInfo"]->title?></h3>
+                                <h6><?php echo $items["categoryInfo"]->description?></h6>
                             </div>
                         </div>
                     </div>

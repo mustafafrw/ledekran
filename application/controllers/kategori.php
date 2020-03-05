@@ -24,10 +24,16 @@ class Kategori extends CI_Controller {
         $footer = $this->main_model->get_all(
             array("type" => "footer"), "menu_id ASC","menu"
         );
+        $kategori = $this->main_model->get(
+            array("id" =>$param ), "category"
+                 
+        );
         $items = array(
             "header" => $header,
-            "footer" => $footer
+            "footer" => $footer,
+            "categoryInfo" => $kategori
         );
+         
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->items = $items;
