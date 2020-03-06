@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class kategori_v extends CI_Controller {
+class kategori extends CI_Controller {
     public $viewFolder="";
   
   public function __construct() {

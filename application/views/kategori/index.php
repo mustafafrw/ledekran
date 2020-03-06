@@ -12,14 +12,14 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <?php $this->load->view("includes_admin/site_style"); ?>
+    <?php $this->load->view("includes/site_style"); ?>
 </head>
 
 
 <!--============= start main area -->
 <body>
     <!-- APP NAVBAR ==========-->
-    <?php $this->load->view("includes_admin/head"); ?>
+    <?php $this->load->view("includes/head"); ?>
     <!--========== END app navbar -->
 
     <!-- APP ASIDE ==========-->
@@ -34,12 +34,12 @@
     <!-- .wrap -->
 
         <!-- APP FOOTER -->
-    <?php $this->load->view("includes_admin/footer"); ?>
+    <?php $this->load->view("includes/footer"); ?>
         <!-- /#app-footer -->
     
     <!--========== END app main -->
 
-    <?php $this->load->view("includes_admin/site_script"); ?>
+    <?php $this->load->view("includes/site_script"); ?>
 
 </body>
 </html>
