@@ -28,11 +28,11 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img  src="<?php echo $item->thumbnail; ?>" alt="">
+                                        <a href="<?php echo base_url("urun/").$item->post_id;?>"><img  src="<?php echo $item->thumbnail; ?>" alt=""></a>
                    
                          
                                         <ul>
-                                            <li class="quick-view"><a href="#">Teklif Al</a></li>
+                                            <li class="quick-view"><a href="<?php echo base_url("urun/").$item->post_id;?>">Teklif Al</a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">

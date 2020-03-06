@@ -16,6 +16,7 @@ class urun extends CI_Controller {
     }
 
     function index($param){
+        
         $viewData = new stdClass();
 
         $header = $this->main_model->get_all(
@@ -32,9 +33,10 @@ class urun extends CI_Controller {
             array(), "id ASC" ,"category"
                  
         );
-          $posts = $this->main_model->get_all(
-            array("category_id" => $param), "post_id ASC","posts"
+          $posts = $this->main_model->get(
+            array("post_id" => $param),"posts"
         );
+         
         $items = array(
             "header" => $header,
             "footer" => $footer,
