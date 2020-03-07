@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <h4 class="m-b-lg">
             Ürün Listesi
-            <a href="<?php echo base_url("admin/kategori/new_form"); ?>" class="btn btn-outline btn-primary btn-xs pull-right"> <i class="fa fa-plus"></i> Yeni Ekle</a>
+            <a href="<?php echo base_url("admin/urunler/new_form"); ?>" class="btn btn-outline btn-primary btn-xs pull-right"> <i class="fa fa-plus"></i> Yeni Ekle</a>
 
         </h4>
     </div><!-- END column -->
@@ -11,7 +11,7 @@
 
                 <?php  if(!isset($items)) { ?>
                 <div class="alert alert-info text-center">
-                    <p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("admin/kategori/new_form"); ?>">tıklayınız</a></p>
+                    <p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("admin/urunler/new_form"); ?>">tıklayınız</a></p>
                 </div>
                 <?php } ?>
 
@@ -19,8 +19,9 @@
                     <thead>
                     <th class="order"><i class="fa fa-reorder"></i></th>
                 <th class="w50">#ID</th>
-                        <th>Başlık</th>
-                        <th>Açıklama</th>
+                        <th>Başlık</th>                   
+                        <th>Kategori</th>
+                        <th>Görsel</th>
                         <th>İşlem</th>
                     </thead>
                     <tbody class="sortable" data-url="">    
@@ -29,16 +30,19 @@
                         
                             <tr id="ord-X">
                                 <td class="order"><i class="fa fa-reorder"></i></td>
-                                <td class="w50 text-center"><?php echo $item->id; ?></td>
+                                <td class="w50 text-center"><?php echo $item->post_id; ?></td>
                                 <td><?php echo $item->title; ?></td>
-                                <td><?php echo $item->description; ?></td>
+                               
+                                <td><?php echo $item->category_id; ?></td>
+                                <td><?php echo $item->thumbnail; ?></td>
                                 <td>
                                     <button
-                                        data-url="<?php echo base_url("admin/kategori/delete/$item->id"); ?>"
+                                        data-url="<?php echo base_url("admin/urunler/delete/$item->post_id"); ?>"
                                         class="btn btn-sm btn-danger btn-outline remove-btn">
                                         <i class="fa fa-trash"></i> Sil
                                     </button>
-                                    <a href="<?php echo base_url("admin/kategori/update_form/$item->id"); ?>" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
+                                    <br><br>
+                                    <a href="<?php echo base_url("admin/urunler/update_form/$item->post_id"); ?>" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
                                 </td>
                             </tr>
                                  <?php } ?>
