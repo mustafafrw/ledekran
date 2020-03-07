@@ -43,6 +43,8 @@
                                     </button>
                                     <br><br>
                                     <a href="<?php echo base_url("admin/urunler/update_form/$item->post_id"); ?>" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
+                                    <a href="<?php echo base_url("admin/urunler/image_form/$item->post_id"); ?>" class="btn btn-sm btn-dark btn-outline"><i class="fa fa-image"></i> Resimler</a>
+
                                 </td>
                             </tr>
                                  <?php } ?>

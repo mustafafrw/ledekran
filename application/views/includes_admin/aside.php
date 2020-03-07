@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url("product"); ?>">
+                    <a href="<?php echo base_url("admin/urunler"); ?>">
                         <i class="menu-icon fa fa-cubes"></i>
                         <span class="menu-text">Ürünler</span>
                     </a>

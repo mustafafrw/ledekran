@@ -225,35 +225,38 @@ class urunler extends CI_Controller {
         $viewData->item_images = $this->main_model->get_all(
           array(
            "post_id" => $post_id,       
-        )); 
+          ),"pictures"
+        ); 
    
        $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
        
        echo $render_html;
 
     }
-        public function image_upload($post_id){
+    public function image_upload($post_id){
         
+        echo "SONUÇ OJERFMVPEKRGTOPRMTGHRM";
+
         $file_name = convertToSEO(pathinfo($_FILES["file"]["name"],PATHINFO_FILENAME)).".".pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
          
         $config["allowed_types"] = "jpg|jpeg|png";
-        $config["upload_path"]   = "uploads/$this->viewFolder/";
+        $config["upload_path"]   = "uploads";
         $config["file_name"]     =$file_name;  
         
         $this->load->library("upload", $config);
-
+            
         $upload = $this->upload->do_upload("file");
-
+        
         if($upload){
             
           $uploaded_file = $this->upload->data("file_name");
           
           $this->main_model->add(
         array(
+            "post_id"=> $post_id,
               "path"   => $uploaded_file,
               "type"  => "normal",
-              "post_id"=> $post_id
-        )
+        ),"pictures"
             ); 
          
         } else {
@@ -261,28 +264,29 @@ class urunler extends CI_Controller {
         }
 
     }
-      public function imageRankSetter(){
+    public function image_form($id){
 
+        $viewData = new stdClass();
 
-        $data = $this->input->post("data");
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "image";
 
-        parse_str($data, $order);
+        $viewData->item = $this->main_model->get(
+            array(
+                "post_id"    => $id
+            ),
+            "posts"
+        );
 
-        $items = $order["ord"];
+        $viewData->item_images = $this->main_model->get_all(
+          array(
+           "post_id" => $id
+                //sürekleyip bırakınca sıralamanın kalması için  ranka göre ASC şeklinde sırala
+        ),"pictures_id ASC","pictures"
+                );
 
-        foreach ($items as $rank => $id){
-
-            $this->product_image_model->update(
-                array(
-                    "id"        => $id,
-                    "rank !="   => $rank
-                ),
-                array(
-                    "rank"      => $rank
-                )
-            );
-           
-        }
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
     }
 }

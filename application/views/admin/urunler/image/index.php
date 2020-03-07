@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <?php $this->load->view("includes/head"); ?>
+    <?php $this->load->view("includes_admin/head"); ?>
     <?php $this->load->view("{$viewFolder}/{$subViewFolder}/page_style"); ?>
 </head>
 
@@ -9,15 +9,15 @@
 <!--============= start main area -->
 
     <!-- APP NAVBAR ==========-->
-    <?php $this->load->view("includes/navbar"); ?>
+    <?php $this->load->view("includes_admin/navbar"); ?>
     <!--========== END app navbar -->
 
     <!-- APP ASIDE ==========-->
-    <?php $this->load->view("includes/aside"); ?>
+    <?php $this->load->view("includes_admin/aside"); ?>
     <!--========== END app aside -->
 
     <!-- navbar search -->
-    <?php $this->load->view("includes/navbar-search"); ?>
+    <?php $this->load->view("includes_admin/navbar-search"); ?>
     <!-- .navbar-search -->
 
     <!-- APP MAIN ==========-->
@@ -29,12 +29,12 @@
         </div><!-- .wrap -->
 
         <!-- APP FOOTER -->
-        <?php $this->load->view("includes/footer"); ?>
+        <?php $this->load->view("includes_admin/footer"); ?>
         <!-- /#app-footer -->
     </main>
     <!--========== END app main -->
 
-    <?php $this->load->view("includes/include_script"); ?>
+    <?php $this->load->view("includes_admin/include_script"); ?>
 
 </body>
 </html>
