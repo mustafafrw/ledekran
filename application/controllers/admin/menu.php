@@ -30,20 +30,20 @@ class menu extends CI_Controller {
         
          public function new_form(){
 
-        $viewData = new stdClass();
+            $viewData = new stdClass();
 
-        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "ekle";
+            /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+            $viewData->viewFolder = $this->viewFolder;
+            $viewData->subViewFolder = "ekle";
 
-        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
        
-    }
+         }
       public function delete($id){
 
         $delete = $this->main_model->delete(
             array(
-                "id"    => $id
+                "menu_id"    => $id
             ),
            "menu"
         );
@@ -80,12 +80,12 @@ class menu extends CI_Controller {
 
             $update = $this->main_model->update(
                 array(
-                    "id"    => $id
+                    "menu_id"    => $id
                 ),
                 array(
                     "title"         => $this->input->post("title"),
-                    "description"   => $this->input->post("description"),
-                    "url"           => convertToSEO($this->input->post("title")),
+                    "url"           => $this->input->post("url"),
+                    "type"           => $this->input->post("type"),
                 ),
                    "menu"
             );
@@ -108,14 +108,14 @@ class menu extends CI_Controller {
             /** Tablodan Verilerin Getirilmesi.. */
             $item = $this->main_model->get(
                 array(
-                    "id"    => $id,
+                    "menu_id"    => $id,
                 ),
                     "menu"
             );
 
             /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
             $viewData->viewFolder = $this->viewFolder;
-            $viewData->subViewFolder = "güncelle";
+            $viewData->subViewFolder = "update";
             $viewData->form_error = true;
             $viewData->item = $item;
 
@@ -135,13 +135,13 @@ class menu extends CI_Controller {
         /** Tablodan Verilerin Getirilmesi.. */
         $item = $this->main_model->get(
             array(
-                "id"    => $id,
+                "menu_id"    => $id,
             ),"menu"
         );
         
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "güncelle";
+        $viewData->subViewFolder = "update";
         $viewData->item = $item;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
@@ -171,10 +171,9 @@ class menu extends CI_Controller {
 
             $insert = $this->main_model->add(
                 array(
-                    "id"         => convertToSEO($this->input->post("title")),
                     "title"         => $this->input->post("title"),
-                    "description"   => $this->input->post("description"),
-                    "url"           => convertToSEO($this->input->post("title")),
+                    "url"           => $this->input->post("url"),
+                    "type"          => $this->input->post("type")
                 ),
                     "menu"
             );
