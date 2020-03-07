@@ -89,8 +89,8 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */// base_url kullanabilememiz için helepre 'url' eklememiz gerekli
-$autoload['helper'] = array("url");
 
+$autoload['helper'] = array("url", "tools");
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files

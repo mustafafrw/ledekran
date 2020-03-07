@@ -22,19 +22,19 @@ class main_model extends CI_Model
         return $this->db->where($where)->order_by($order)->get($tbName)->result();
     }
 
-    public function add($data = array())
+    public function add($data = array(),$tbName)
     {
-        return $this->db->insert($this->tableName, $data);
+        return $this->db->insert($tbName, $data);
     }
 
-    public function update($where = array(), $data = array())
+    public function update($where = array(), $data = array(),$tbName)
     {
-        return $this->db->where($where)->update($this->tableName, $data);
+        return $this->db->where($where)->update($tbName, $data);
     }
 
-    public function delete($where = array())
+    public function delete($where = array(),$tbName)
     {
-        return $this->db->where($where)->delete($this->tableName);
+        return $this->db->where($where)->delete($tbName);
     }
 
 }
