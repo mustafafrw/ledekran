@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class kategori extends CI_Controller {
+class menu extends CI_Controller {
     public $viewFolder="";
   
   public function __construct() {
       
       parent::__construct();
-      $this->viewFolder = "admin/kategori";
+      $this->viewFolder = "admin/menu";
       $this->load->model("main_model");
   }
       
@@ -17,7 +17,7 @@ class kategori extends CI_Controller {
         $viewData = new stdClass();
         
          $kategoriListe = $this->main_model->get_all(
-            array(), "id ASC" ,"category"
+            array(), "menu_id ASC" ,"menu"
                  
         );
         
@@ -45,14 +45,14 @@ class kategori extends CI_Controller {
             array(
                 "id"    => $id
             ),
-           "category"
+           "menu"
         );
 
         // TODO Alert Sistemi Eklenecek...
         if($delete){
-            redirect(base_url("admin/kategori"));
+            redirect(base_url("admin/menu"));
         } else {
-            redirect(base_url("admin/kategori"));
+            redirect(base_url("admin/menu"));
         }
 
     }
@@ -87,17 +87,17 @@ class kategori extends CI_Controller {
                     "description"   => $this->input->post("description"),
                     "url"           => convertToSEO($this->input->post("title")),
                 ),
-                   "category"
+                   "menu"
             );
 
             // TODO Alert sistemi eklenecek...
             if($update){
 
-                redirect(base_url("admin/kategori"));
+                redirect(base_url("admin/menu"));
 
             } else {
 
-                redirect(base_url("admin/kategori"));
+                redirect(base_url("admin/menu"));
 
             }
 
@@ -110,12 +110,12 @@ class kategori extends CI_Controller {
                 array(
                     "id"    => $id,
                 ),
-                    "category"
+                    "menu"
             );
 
             /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
             $viewData->viewFolder = $this->viewFolder;
-            $viewData->subViewFolder = "guncelle";
+            $viewData->subViewFolder = "güncelle";
             $viewData->form_error = true;
             $viewData->item = $item;
 
@@ -136,12 +136,12 @@ class kategori extends CI_Controller {
         $item = $this->main_model->get(
             array(
                 "id"    => $id,
-            ),"category"
+            ),"menu"
         );
         
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "guncelle";
+        $viewData->subViewFolder = "güncelle";
         $viewData->item = $item;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
@@ -176,17 +176,17 @@ class kategori extends CI_Controller {
                     "description"   => $this->input->post("description"),
                     "url"           => convertToSEO($this->input->post("title")),
                 ),
-                    "category"
+                    "menu"
             );
 
             // TODO Alert sistemi eklenecek...
             if($insert){
 
-                redirect(base_url("admin/kategori"));
+                redirect(base_url("admin/menu"));
 
             } else {
 
-                redirect(base_url("admin/kategori"));
+                redirect(base_url("admin/menu"));
 
             }
 

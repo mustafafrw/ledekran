@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url("product"); ?>">
+                    <a href="<?php echo base_url("admin/menu"); ?>">
                         <i class="menu-icon fa fa-cubes"></i>
                         <span class="menu-text">Menüler</span>
                     </a>
