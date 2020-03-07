@@ -17,11 +17,9 @@
 
                 <table class="table table-hover table-striped table-bordered content-container">
                     <thead>
-                    <th class="order"><i class="fa fa-reorder"></i></th>
                 <th class="w50">#ID</th>
                         <th>Başlık</th>                   
                         <th>Kategori</th>
-                        <th>Görsel</th>
                         <th>İşlem</th>
                     </thead>
                     <tbody class="sortable" data-url="">    
@@ -29,12 +27,10 @@
                              <?php foreach($items as $item) { ?>
                         
                             <tr id="ord-X">
-                                <td class="order"><i class="fa fa-reorder"></i></td>
                                 <td class="w50 text-center"><?php echo $item->post_id; ?></td>
                                 <td><?php echo $item->title; ?></td>
                                
                                 <td><?php echo $item->category_id; ?></td>
-                                <td><?php echo $item->thumbnail; ?></td>
                                 <td>
                                     <button
                                         data-url="<?php echo base_url("admin/urunler/delete/$item->post_id"); ?>"

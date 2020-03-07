@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <h4 class="m-b-lg">
-            <?php echo "<b>$item->title</b> kaydını düzenliyorsunuz"; ?>
+            <?php echo "<b>$item->title</b> kategorisini düzenliyorsunuz"; ?>
         </h4>
     </div><!-- END column -->
     <div class="col-md-12">

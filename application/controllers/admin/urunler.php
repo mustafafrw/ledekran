@@ -225,13 +225,12 @@ class urunler extends CI_Controller {
         $viewData->item_images = $this->main_model->get_all(
           array(
            "post_id" => $post_id,       
-          ),"pictures"
+          ),"pictures_id ASC","pictures"
         ); 
    
        $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
        
        echo $render_html;
-
     }
     public function image_upload($post_id){
         
@@ -288,5 +287,76 @@ class urunler extends CI_Controller {
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
+    }
+    public function imageDelete($id, $post_id){
+
+      $fileName = $this->main_model->get(
+              array(
+                   "pictures_id"=> $id
+              ),"pictures"
+            );
+      $delete = $this->main_model->delete(
+          array(
+              "pictures_id" => $id
+          ),"pictures"
+        );
+
+          
+      // TODO Alert Sistemi Eklenecek...
+      if($delete){
+
+         unlink("uploads/$fileName->path");
+
+          redirect(base_url("admin/urunler/image_form/$post_id"));
+
+      } else {
+          redirect(base_url("admin/urunler/image_form/$post_id"));
+      }
+
+  }
+  public function isCoverSetter($id ,$post_id){
+
+        if($id && $post_id){
+
+            $isCover = ($this->input->post("data") === "true") ? "kapak" : "normal";
+            //Kapak yapılmak istenen Kayıt
+            $this->main_model->update(
+                array(
+                    "pictures_id"        => $id,
+                    "post_id"=> $post_id
+                ),
+                array(
+                    "type"  => $isCover
+                ),"pictures"
+            );
+            // Kapak yapılmayan diğer Kayıtlar
+            $this->main_model->update(
+                array(
+                    "pictures_id !="        => $id,
+                    "post_id"=> $post_id
+                ),
+                array(
+                    "type"  => "normal"
+                ),"pictures"
+            );
+
+            // Burasıda sayfada biri açıkken diğerlini kapalı gösterecek
+            $viewData = new stdClass();
+
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "image";
+
+        $viewData->item_images = $this->main_model->get_all(
+        array(
+        "post_id" => $post_id
+        ), "pictures_id ASC","pictures"
+                );
+
+    $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
+
+    echo $render_html;
+
+        }
     }
 }

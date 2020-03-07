@@ -36,7 +36,7 @@
                                     type="checkbox"
                                     data-switchery
                                     data-color="#ff5b5b"
-                                    <?php echo ($image->type !="normal") ? "checked" : ""; ?>
+                                    <?php echo ($image->type =="kapak") ? "checked" : ""; ?>
                                 />
                             </td>
                             <td class="w100 text-center">
