@@ -31,11 +31,16 @@ class urunler extends CI_Controller {
          public function new_form(){
 
         $viewData = new stdClass();
-
+         
+         $kategoriListe = $this->main_model->get_all(
+            array(), "id ASC" ,"category"
+                 
+        );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "ekle";
-
+        $viewData->items = $kategoriListe;
+        
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
        
     }
@@ -209,6 +214,75 @@ class urunler extends CI_Controller {
             // Hata ekranda gösterilir...
 
     }
+     public function refresh_image_list($post_id){
+          $viewData = new stdClass();
+
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "image";
+
+        
+        $viewData->item_images = $this->main_model->get_all(
+          array(
+           "post_id" => $post_id,       
+        )); 
+   
+       $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
+       
+       echo $render_html;
 
     }
+        public function image_upload($post_id){
+        
+        $file_name = convertToSEO(pathinfo($_FILES["file"]["name"],PATHINFO_FILENAME)).".".pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
+         
+        $config["allowed_types"] = "jpg|jpeg|png";
+        $config["upload_path"]   = "uploads/$this->viewFolder/";
+        $config["file_name"]     =$file_name;  
+        
+        $this->load->library("upload", $config);
 
+        $upload = $this->upload->do_upload("file");
+
+        if($upload){
+            
+          $uploaded_file = $this->upload->data("file_name");
+          
+          $this->main_model->add(
+        array(
+              "path"   => $uploaded_file,
+              "type"  => "normal",
+              "post_id"=> $post_id
+        )
+            ); 
+         
+        } else {
+            echo "islem basarisiz";
+        }
+
+    }
+      public function imageRankSetter(){
+
+
+        $data = $this->input->post("data");
+
+        parse_str($data, $order);
+
+        $items = $order["ord"];
+
+        foreach ($items as $rank => $id){
+
+            $this->product_image_model->update(
+                array(
+                    "id"        => $id,
+                    "rank !="   => $rank
+                ),
+                array(
+                    "rank"      => $rank
+                )
+            );
+           
+        }
+
+    }
+}

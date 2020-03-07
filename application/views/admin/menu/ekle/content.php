@@ -19,14 +19,15 @@
                         <label>Hedef Url</label>
                         <input class="form-control" placeholder="Url" name="url">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group">                      
 						<label>Lokasyon</label>
+                                               
 						<div id="control-demo-6">
 							<select class="form-control" name="type">
 								<option value="head">Header</option>
 								<option value="footer">Footer</option>
 							</select>
-						</div>
+						</div>                   
 					</div>
                     <button type="submit" class="btn btn-primary btn-md btn-outline">Kaydet</button>
                     <a href="<?php echo base_url("admin/menu"); ?>" class="btn btn-md btn-danger btn-outline">İptal</a>
