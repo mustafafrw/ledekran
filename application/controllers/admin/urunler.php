@@ -90,8 +90,8 @@ class urunler extends CI_Controller {
                 array(
                     "title"         => $this->input->post("title"),
                     "description"   => $this->input->post("description"),
-                    "category_id"   => $this->input->post("category_id"),
-                    "thumbnail"           => convertToSEO($this->input->post("thumbnail")),
+                    "category_id"   => $this->input->post("catid"),
+                    "thumbnail"     =>"",
                 ),
                    "posts"
             );
@@ -111,13 +111,9 @@ class urunler extends CI_Controller {
 
             $viewData = new stdClass();
 
+        
             /** Tablodan Verilerin Getirilmesi.. */
-            $item = $this->main_model->get(
-                array(
-                    "post_id"    => $post_id,
-                ),
-                    "posts"
-            );
+            
 
             /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
             $viewData->viewFolder = $this->viewFolder;
@@ -138,17 +134,27 @@ class urunler extends CI_Controller {
 
         $viewData = new stdClass();
 
-        /** Tablodan Verilerin Getirilmesi.. */
-        $item = $this->main_model->get(
-            array(
-                "post_id"    => $post_id,
-            ),"posts"
+         
+         $kategoriListe = $this->main_model->get_all(
+            array(), "id ASC" ,"category"
+                 
         );
+          $urun = $this->main_model->get(
+                array(
+                    "post_id"    => $post_id,
+                ),
+                    "posts"
+            );
+        $items = array(
+            "urun" => $urun,
+            "kategori" => $kategoriListe,
+        );
+        
         
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "güncelle";
-        $viewData->item = $item;
+        $viewData->item = $items;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
@@ -204,7 +210,7 @@ class urunler extends CI_Controller {
             $viewData->viewFolder = $this->viewFolder;
             $viewData->subViewFolder = "ekle";
             $viewData->form_error = true;
-
+            
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
 
