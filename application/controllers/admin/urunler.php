@@ -95,6 +95,21 @@ class urunler extends CI_Controller {
                 ),
                    "posts"
             );
+             $update_data = $this->main_model->update(
+                array(
+                    "post_id"    => $post_id
+                ),
+                array(
+                    "h_start"         => $this->input->post("h_start"),
+                    "h_inc"   => $this->input->post("h_inc"),
+                    "h_end"   => $this->input->post("h_end"),
+                    "w_start"   => $this->input->post("w_start"),
+                    "w_inc"   => $this->input->post("w_inc"),
+                    "w_end"   => $this->input->post("w_end"),
+                   
+                ),
+                   "post_data"
+            );
 
             // TODO Alert sistemi eklenecek...
             if($update){
@@ -145,10 +160,20 @@ class urunler extends CI_Controller {
                 ),
                     "posts"
             );
+         $post_data = $this->main_model->get(
+                array(
+                    "post_id"    => $post_id,
+                ),
+                    "post_data"
+            );
         $items = array(
             "urun" => $urun,
             "kategori" => $kategoriListe,
+             "post_data" => $post_data
         );
+        
+ 
+               
         
         
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */

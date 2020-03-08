@@ -36,13 +36,16 @@ class urun extends CI_Controller {
           $posts = $this->main_model->get(
             array("post_id" => $param),"posts"
         );
-         
+          $posts_data = $this->main_model->get(
+            array("post_id" => $param),"post_data"
+        );
         $items = array(
             "header" => $header,
             "footer" => $footer,
             "categoryInfo" => $kategori,
             "categoryList" =>$kategoriListe,
-            "post"         => $posts
+            "post"         => $posts,
+            "post_data" => $posts_data
         );
         
          

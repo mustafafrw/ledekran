@@ -27,10 +27,14 @@ class Main extends CI_Controller {
         $slider = $this->main_model->get_all(
             array(), "id ASC","slider"
         );
+        $ayarlar = $this->main_model->get(
+            array(), "ayarlar"
+        );
         $items = array(
             "header" => $header,
             "footer" => $footer,
-            "slider" => $slider
+            "slider" => $slider,
+            "ayarlar" => $ayarlar
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;

@@ -1,8 +1,4 @@
 
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
     <!-- Partner Logo Section End -->
 
     <!-- Footer Section Begin -->
@@ -15,15 +11,16 @@
                             <a href="#"><img src="img/logo.png" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: Şişli / İstanbul</li>
-                            <li>Phone: 0546 899 66 66</li>
-                            <li>Email: led_tabela@gmail.com</li>
+                            <li>Address: <?php echo $items["ayarlar"]->adres;  ?></li>
+                            <li>Telefon: <?php echo $items["ayarlar"]->tel_1;  ?></li>
+                            <li>Misyon:   <?php echo $items["ayarlar"]->misyon;  ?></li>
+                            <li>Visyon:   <?php echo $items["ayarlar"]->visyon;  ?></li>
+                            
                         </ul>
                         <div class="footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="<?php echo $items["ayarlar"]->facebook; ?>"><i class="fa fa-facebook"></i></a>
+                            <a href="<?php echo $items["ayarlar"]->instagram; ?>"><i class="fa fa-instagram"></i></a>
+                            <a href="<?php echo $items["ayarlar"]->twitter; ?>"><i class="fa fa-twitter"></i></a>                          
                         </div>
                     </div>
                 </div>

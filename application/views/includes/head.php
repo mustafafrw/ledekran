@@ -8,19 +8,18 @@
                 <div class="ht-left">
                     <div class="mail-service">
                         <i class=" fa fa-envelope"></i>
-                        led_tabela@gmail.comX
+                        <?php echo $items["ayarlar"]->email;?>
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
-                        +90 544 444 99 64X
+                       <?php echo $items["ayarlar"]->tel_1;  ?>
                     </div>
                 </div>
                 <div class="ht-right">
                     <div class="top-social">
-                        <a href="#"><i class="ti-facebook"></i></a>
-                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                        <a href="#"><i class="ti-linkedin"></i></a>
-                        <a href="#"><i class="ti-pinterest"></i></a>
+                            <a href="<?php echo $items["ayarlar"]->facebook; ?>"><i class="fa fa-facebook"></i></a>
+                            <a href="<?php echo $items["ayarlar"]->instagram; ?>"><i class="fa fa-instagram"></i></a>
+                            <a href="<?php echo $items["ayarlar"]->twitter; ?>"><i class="fa fa-twitter"></i></a>                         
                     </div>
                 </div>
             </div>

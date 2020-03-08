@@ -15,19 +15,20 @@
                         <?php if(isset($form_error)){ ?>
                             <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
                         <?php } ?>
-                    </div>  <div class="form-group">
-						<label>Kategori</label>
-                                               
-						<div id="control-demo-6">
-							<select class="form-control" name="catid">
-                                                            <?php foreach($item["kategori"] as $itemx){?>
-								<option value="<?php echo $itemx->id?>"><?php echo $itemx->title ?></option>
-								
-                                                                <?php }?>
-							</select>
-						</div>     
-                                               
-					</div>
+                    </div> 
+                    <div class="form-group">
+			<label>Kategori</label>                                      
+				<div id="control-demo-6">
+			<select class="form-control" name="catid">
+                            
+                             <?php foreach($item["kategori"] as $itemx){?>
+                            
+				<option value="<?php echo $itemx->id?>"><?php echo $itemx->title ?></option>								
+   
+                          <?php }?>
+			</select>
+		    </div>                                           
+		</div>
                     
                    
                     <div class="form-group">
@@ -36,6 +37,50 @@
                             <?php echo $item["urun"]->description; ?>
                         </textarea>
                     </div>
+                    
+                    <div class="form-group">
+                        <label>Yükseklik Başlangıç</label>
+                        <input class="form-control" placeholder="Başlık" name="h_start" value="<?php echo $item["post_data"]->h_start; ?>">
+                        <?php if(isset($form_error)){ ?>
+                            <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
+                        <?php } ?>
+                    </div> 
+                      <div class="form-group">
+                        <label>Yükseklik artış</label>
+                        <input class="form-control" placeholder="Başlık" name="h_inc" value="<?php echo $item["post_data"]->h_inc; ?>">
+                        <?php if(isset($form_error)){ ?>
+                            <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
+                        <?php } ?>
+                    </div> 
+                      <div class="form-group">
+                        <label>Yükseklik Bitiş</label>
+                        <input class="form-control" placeholder="Başlık" name="h_end" value="<?php echo $item["post_data"]->h_end; ?>">
+                        <?php if(isset($form_error)){ ?>
+                            <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
+                        <?php } ?>
+                    </div> 
+                      <div class="form-group">
+                        <label>Genişlik Başlangıç</label>
+                        <input class="form-control" placeholder="Başlık" name="w_start" value="<?php echo $item["post_data"]->w_start; ?>">
+                        <?php if(isset($form_error)){ ?>
+                            <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
+                        <?php } ?>
+                    </div> 
+                      <div class="form-group">
+                        <label>Genişlik Artış</label>
+                        <input class="form-control" placeholder="Başlık" name="w_inc" value="<?php echo $item["post_data"]->w_inc; ?>">
+                        <?php if(isset($form_error)){ ?>
+                            <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
+                        <?php } ?>
+                    </div> 
+                      <div class="form-group">
+                        <label>Genişlik Bitiş</label>
+                        <input class="form-control" placeholder="Başlık" name="w_end" value="<?php echo $item["post_data"]->w_end; ?>">
+                        <?php if(isset($form_error)){ ?>
+                            <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
+                        <?php } ?>
+                    </div>
+                    
                     <button type="submit" class="btn btn-primary btn-md btn-outline">Güncelle</button>
                     <a href="<?php echo base_url("admin/urunler"); ?>" class="btn btn-md btn-danger btn-outline">İptal</a>
                 </form>
