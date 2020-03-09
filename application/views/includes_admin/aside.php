@@ -6,7 +6,7 @@
 
 
                 <li>
-                    <a href="javascript:void(0)">
+                    <a href="admin">
                         <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
                         <span class="menu-text">Anasayfa</span>
                     </a>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)">
+                    <a href="<?php echo base_url("admin/slider") ?>">
                         <i class="menu-icon zmdi zmdi-layers zmdi-hc-lg"></i>
                         <span class="menu-text">Slider</span>
                     </a>
@@ -54,7 +54,8 @@
                         <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
                     </a>
                     <ul class="submenu">
-                        <li><a href="href="<?php echo base_url("admin/ayarlar/iletisim"); ?>"><span class="menu-text">İletişim</span></a></li>
+                        <li><a href="<?php echo base_url("admin/ayarlar/iletisim"); ?>"><span class="menu-text">İletişim</span></a></li>
+                        <li><a href="<?php echo base_url("admin/ayarlar/pdf"); ?>"><span class="menu-text">Pdf</span></a></li>
                         <li><a href="<?php echo base_url("admin/ayarlar/seo");?>"><span class="menu-text">Seo</span></a></li>
                     </ul>
                  </li>

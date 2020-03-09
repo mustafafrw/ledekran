@@ -15,10 +15,18 @@ class admin extends CI_Controller {
         public function index(){
             
         $viewData = new stdClass();
+        
+        $form = $this->main_model->get_all(
+            array(), "id ASC" ,"form"               
+        );
+        
+            
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "";
-
-        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+        $viewData->items = $form;
+        $this->load->view("{$viewData->viewFolder}/index", $viewData);
         }
+        
        
-    }
+    
+}

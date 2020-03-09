@@ -17,8 +17,8 @@
 
     <!-- navbar search -->
     <?php $this->load->view("includes_admin/navbar-search"); ?>
-    <!-- .navbar-search -->
 
+    <!-- .navbar-search -->
     <!-- APP MAIN ==========-->
     <main id="app-main" class="app-main">
         <div class="wrap">

@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class urunler extends CI_Controller {
+class slider extends CI_Controller {
     public $viewFolder="";
   
   public function __construct() {
       
       parent::__construct();
-      $this->viewFolder = "admin/urunler";
+      $this->viewFolder = "admin/slider";
       $this->load->model("main_model");
   }
       
@@ -16,14 +16,14 @@ class urunler extends CI_Controller {
             
         $viewData = new stdClass();
         
-         $kategoriListe = $this->main_model->get_all(
-            array(), "post_id ASC" ,"posts"
+         $items= $this->main_model->get_all(
+            array(), "id ASC" ,"slider"
                  
         );
         
         $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "liste";
-        $viewData->items = $kategoriListe;
+        $viewData->subViewFolder = "image";
+        $viewData->items = $items;
         
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
@@ -33,35 +33,35 @@ class urunler extends CI_Controller {
         $viewData = new stdClass();
          
          $kategoriListe = $this->main_model->get_all(
-            array(), "id ASC" ,"category"
+            array(), "id ASC" ,"slider"
                  
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "ekle";
+        $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
         
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
        
     }
-      public function delete($post_id){
+      public function delete($id){
 
         $delete = $this->main_model->delete(
             array(
-                "post_id"    => $post_id
+                "id"    => $id
             ),
-           "posts"
+           "slider"
         );
 
         // TODO Alert Sistemi Eklenecek...
         if($delete){
-            redirect(base_url("admin/urunler"));
+            redirect(base_url("admin/slider"));
         } else {
-            redirect(base_url("admin/urunler"));
+            redirect(base_url("admin/slider"));
         }
 
     }
-       public function update($post_id){
+       public function update($id){
 
         $this->load->library("form_validation");
 
@@ -85,40 +85,25 @@ class urunler extends CI_Controller {
 
             $update = $this->main_model->update(
                 array(
-                    "post_id"    => $post_id
+                    "id"    => $id
                 ),
                 array(
-                    "title"         => $this->input->post("title"),
-                    "description"   => $this->input->post("description"),
-                    "category_id"   => $this->input->post("catid"),
-                    "thumbnail"     =>"",
+                    "path"         => $this->input->post("path"),
+                    "yazi1"   => $this->input->post("yazi1"),
+                    "yazi2"   => $this->input->post("yazi2"),
+                    "picture"   => $this->input->post("picture"),
                 ),
-                   "posts"
+                   "slider"
             );
-             $update_data = $this->main_model->update(
-                array(
-                    "post_id"    => $post_id
-                ),
-                array(
-                    "h_start"         => $this->input->post("h_start"),
-                    "h_inc"   => $this->input->post("h_inc"),
-                    "h_end"   => $this->input->post("h_end"),
-                    "w_start"   => $this->input->post("w_start"),
-                    "w_inc"   => $this->input->post("w_inc"),
-                    "w_end"   => $this->input->post("w_end"),
-                   
-                ),
-                   "post_data"
-            );
-
+                       
             // TODO Alert sistemi eklenecek...
             if($update){
 
-                redirect(base_url("admin/urunler"));
+                redirect(base_url("admin/slider"));
 
             } else {
 
-                redirect(base_url("admin/urunler"));
+                redirect(base_url("admin/slider"));
 
             }
 
@@ -145,31 +130,32 @@ class urunler extends CI_Controller {
         // Hata ekranda gösterilir...
 
     }
-      public function update_form($post_id){
+      public function update_form($id){
 
         $viewData = new stdClass();
 
          
          $kategoriListe = $this->main_model->get_all(
-            array(), "id ASC" ,"category"
+            array(), "id ASC" ,"slider"
                  
         );
           $urun = $this->main_model->get(
                 array(
-                    "post_id"    => $post_id,
+                    "id"    => $id,
                 ),
-                    "posts"
+                    "slider"
             );
          $post_data = $this->main_model->get(
                 array(
-                    "post_id"    => $post_id,
+                    "id"    => $id,
                 ),
-                    "post_data"
+                    "slider"
             );
         $items = array(
             "urun" => $urun,
             "kategori" => $kategoriListe,
-             "post_data" => $post_data
+            "post_data" => $post_data,
+            "slider" => $slider
         );
         
  
@@ -245,7 +231,7 @@ class urunler extends CI_Controller {
             // Hata ekranda gösterilir...
 
     }
-     public function refresh_image_list($post_id){
+     public function refresh_image_list(){
           $viewData = new stdClass();
 
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
@@ -254,19 +240,16 @@ class urunler extends CI_Controller {
 
         
         $viewData->item_images = $this->main_model->get_all(
-          array(
-           "post_id" => $post_id,       
-          ),"pictures_id ASC","pictures"
+          array(      
+          ),"id ASC","slider"
         ); 
    
        $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
        
        echo $render_html;
     }
-    public function image_upload($post_id){
+    public function image_upload(){
         
-        echo "SONUÇ OJERFMVPEKRGTOPRMTGHRM";
-
         $file_name = convertToSEO(pathinfo($_FILES["file"]["name"],PATHINFO_FILENAME)).".".pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
          
         $config["allowed_types"] = "jpg|jpeg|png";
@@ -283,10 +266,12 @@ class urunler extends CI_Controller {
           
           $this->main_model->add(
         array(
-            "post_id"=> $post_id,
-              "path"   => $uploaded_file,
-              "type"  => "normal",
-        ),"pictures"
+              "id"    => $id,
+              "path"  => $uploaded_file,
+              "yazi1"  => "yazi1",
+              "yazi2"  => "yazi2",
+              "picture"  => "picture",
+        ),"slider"
             ); 
          
         } else {
@@ -294,7 +279,7 @@ class urunler extends CI_Controller {
         }
 
     }
-    public function image_form($id){
+    public function image_form(){
 
         $viewData = new stdClass();
 
@@ -302,24 +287,23 @@ class urunler extends CI_Controller {
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "image";
 
-        $viewData->item = $this->main_model->get(
+        $viewData->item_images = $this->main_model->get_all(
             array(
-                "post_id"    => $id
-            ),
-            "posts"
+            ),"id ASC",
+            "slider"
         );
 
-        $viewData->item_images = $this->main_model->get_all(
+        /*$viewData->item_images = $this->main_model->get_all(
           array(
-           "post_id" => $id
+           "id" => $id
                 //sürekleyip bırakınca sıralamanın kalması için  ranka göre ASC şeklinde sırala
         ),"pictures_id ASC","pictures"
-                );
+                );*/
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
     }
-    public function imageDelete($id, $post_id){
+    public function imageDelete($id){
 
       $fileName = $this->main_model->get(
               array(
@@ -328,8 +312,8 @@ class urunler extends CI_Controller {
             );
       $delete = $this->main_model->delete(
           array(
-              "pictures_id" => $id
-          ),"pictures"
+              "id" => $id
+          ),"slider"
         );
 
           
@@ -338,56 +322,11 @@ class urunler extends CI_Controller {
 
          unlink("uploads/$fileName->path");
 
-          redirect(base_url("admin/urunler/image_form/$post_id"));
+          redirect(base_url("admin/slider/image_form/$post_id"));
 
       } else {
-          redirect(base_url("admin/urunler/image_form/$post_id"));
+          redirect(base_url("admin/slider/image_form/$post_id"));
       }
 
   }
-  public function isCoverSetter($id ,$post_id){
-
-        if($id && $post_id){
-
-            $isCover = ($this->input->post("data") === "true") ? "kapak" : "normal";
-            //Kapak yapılmak istenen Kayıt
-            $this->main_model->update(
-                array(
-                    "pictures_id"        => $id,
-                    "post_id"=> $post_id
-                ),
-                array(
-                    "type"  => $isCover
-                ),"pictures"
-            );
-            // Kapak yapılmayan diğer Kayıtlar
-            $this->main_model->update(
-                array(
-                    "pictures_id !="        => $id,
-                    "post_id"=> $post_id
-                ),
-                array(
-                    "type"  => "normal"
-                ),"pictures"
-            );
-
-            // Burasıda sayfada biri açıkken diğerlini kapalı gösterecek
-            $viewData = new stdClass();
-
-        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "image";
-
-        $viewData->item_images = $this->main_model->get_all(
-        array(
-        "post_id" => $post_id
-        ), "pictures_id ASC","pictures"
-                );
-
-    $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
-
-    echo $render_html;
-
-        }
-    }
 }

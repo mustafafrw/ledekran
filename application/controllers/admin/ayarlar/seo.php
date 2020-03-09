@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ayarlar extends CI_Controller {
+class seo extends CI_Controller {
     public $viewFolder="";
   
   public function __construct() {
       
       parent::__construct();
-      $this->viewFolder = "admin/ayarlar/iletisim";
+      $this->viewFolder = "admin/ayarlar/seo";
       $this->load->model("main_model");
   }
       
@@ -55,16 +55,18 @@ class ayarlar extends CI_Controller {
                 array(
                     "sirket_ismi"   => $this->input->post("sirket_ismi"),
                     "hakkimda"      => $this->input->post("hakkimda"),
-                    "misyon"   => $this->input->post("misyon"),
-                    "visyon"   => $this->input->post("visyon"),
-                    "logo"   => $this->input->post("logo"),
-                    "tel_1"   => $this->input->post("tel_1"),
-                    "email"   => $this->input->post("email"),
-                    "facebook"   => $this->input->post("facebook"),
-                    "instagram"   => $this->input->post("instagram"),
-                    "twitter "   => $this->input->post("twitter"),
-                    "adres"   => $this->input->post("adres"),
-                    
+                    "misyon"        => $this->input->post("misyon"),
+                    "visyon"        => $this->input->post("visyon"),
+                    "logo"          => $this->input->post("logo"),
+                    "tel_1"         => $this->input->post("tel_1"),
+                    "email"         => $this->input->post("email"),
+                    "facebook"      => $this->input->post("facebook"),
+                    "instagram"     => $this->input->post("instagram"),
+                    "twitter "      => $this->input->post("twitter"),
+                    "adres"         => $this->input->post("adres"),
+                    "title"         => $this->input->post("title"),
+                    "description"   => $this->input->post("description"),
+                    "keywords"      => $this->input->post("keywords"),
                 ),
                    "ayarlar"
             );
@@ -72,11 +74,11 @@ class ayarlar extends CI_Controller {
             // TODO Alert sistemi eklenecek...
             if($update){
 
-                redirect(base_url("admin/ayarlar"));
+                redirect(base_url("admin/ayarlar/seo"));
 
             } else {
 
-                redirect(base_url("admin/ayarlar"));
+                redirect(base_url("admin/ayarlar/seo"));
 
             }
             

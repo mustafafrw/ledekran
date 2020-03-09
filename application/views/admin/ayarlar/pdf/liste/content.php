@@ -2,84 +2,35 @@
 
     <div class="col-md-12">
          <div class="widget p-lg">
-         <form action="<?php echo base_url("admin/ayarlar/update/$items->id"); ?>" method="post">
+         <form action="<?php echo base_url("admin/ayarlar/pdf/update/$items->id"); ?>" method="post">
        
            
                     <div class="form-group">
-                        <label>Şirket İsmi</label>
-                        <input class="form-control" placeholder="Şirket İsmi" name="sirket_ismi" value="<?php echo $items->sirket_ismi; ?>">
+                        <label>Üst Resim Yolu</label>
+                        <input class="form-control" placeholder="Üst Resim Yolu" name="UstResimYolu" value="<?php echo $items->UstResimYolu; ?>">
                         <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"><?php echo form_error("sirket_ismi"); ?></small>
+                            <small class="pull-right input-form-error"><?php echo form_error("UstResimYolu"); ?></small>
                         <?php } ?>
                     </div>
                         <div class="form-group">
-                        <label>Hakkımda</label>
-                        <input class="form-control" placeholder="Hakkımda" name="hakkimda" value="<?php echo $items->hakkimda;?>" >
+                        <label>Alt Resim Yolu</label>
+                        <input class="form-control" placeholder="Alt Resim Yolu" name="AltResimYolu" value="<?php echo $items->AltResimYolu;?>" >
                         <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("hakkimda"); ?></small>
+                            <small class="pull-right input-form-error"> <?php echo form_error("AltResimYolu"); ?></small>
                         <?php } ?>
                         </div>  
                         <div class="form-group">
-                        <label>Misyon</label>
-                        <input class="form-control" placeholder="Misyon" name="misyon" value="<?php echo $items->misyon;?>">
+                        <label>Giriş Yazısı</label>
+                        <input class="form-control" placeholder="Giriş Yazısı" name="GirisYazisi" value="<?php echo $items->GirisYazisi;?>">
                         <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("misyon"); ?></small>
+                            <small class="pull-right input-form-error"> <?php echo form_error("GirisYazisi"); ?></small>
                         <?php } ?>
                        </div>
                       <div class="form-group">
-                        <label>Visyon</label>
-                        <input class="form-control" placeholder="Visyon" name="visyon" value="<?php echo $items->visyon;?>">
+                        <label>Teklif Şartları</label>
+                        <input class="form-control" placeholder="Teklif Şartları" name="TeklifSartlari" value="<?php echo $items->TeklifSartlari;?>">
                         <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("visyon"); ?></small>
-                        <?php } ?>
-                    </div> 
-                      <div class="form-group">
-                        <label>Logo</label>
-                        <input class="form-control" placeholder="Logo" name="logo" value="<?php echo $items->logo;?>" >
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("logo"); ?></small>
-                        <?php } ?>
-                    </div> 
-                       <div class="form-group">
-                        <label>Telefon</label>
-                        <input class="form-control" placeholder="Telefon" name="tel_1" value="<?php echo $items->tel_1;?>">
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("tel_1"); ?></small>
-                        <?php } ?>
-                    </div> 
-                    <div class="form-group">
-                        <label>E-mail</label>
-                        <input class="form-control" placeholder="E-mail" name="email" value="<?php echo $items->email;?>">
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("email"); ?></small>
-                        <?php } ?>
-                    </div>
-                 <div class="form-group">
-                        <label>Facebook</label>
-                        <input class="form-control" placeholder="Facebook" name="facebook" value="<?php echo $items->facebook;?>">
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("facebook"); ?></small>
-                        <?php } ?>
-                    </div>
-                  <div class="form-group">
-                        <label>İnstagram</label>
-                        <input class="form-control" placeholder="İnstagram" name="instagram" value="<?php echo $items->instagram;?>">
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("instagram"); ?></small>
-                        <?php } ?>
-                    </div>
-                     <div class="form-group">
-                        <label>Twitter</label>
-                        <input class="form-control" placeholder="Twitter" name="twitter" value="<?php echo $items->twitter;?>">
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("instagram"); ?></small>
-                        <?php } ?>
-                    </div>
-                    <div class="form-group">
-                        <label>Adres</label>
-                        <input class="form-control" placeholder="Adres" name="adres" value="<?php echo $items->adres;?>">
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("adres"); ?></small>
+                            <small class="pull-right input-form-error"> <?php echo form_error("TeklifSartlari"); ?></small>
                         <?php } ?>
                     </div>
                     <button type="submit" class="btn btn-primary btn-md btn-outline">Güncelle</button>

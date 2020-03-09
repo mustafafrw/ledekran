@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class iletisim extends CI_Controller {
+class pdf extends CI_Controller {
     public $viewFolder="";
   
   public function __construct() {
       
       parent::__construct();
-      $this->viewFolder = "admin/ayarlar/iletisim";
+      $this->viewFolder = "admin/ayarlar/pdf";
       $this->load->model("main_model");
   }
       
@@ -28,8 +28,7 @@ class iletisim extends CI_Controller {
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
         
-     
-      public function delete($id){
+       public function delete($id){
 
         $delete = $this->main_model->delete(
             array(
@@ -46,6 +45,7 @@ class iletisim extends CI_Controller {
         }
 
     }
+ 
        public function update($id){
            
             $update = $this->main_model->update(
@@ -53,19 +53,10 @@ class iletisim extends CI_Controller {
                     "id"    => $id
                 ),
                 array(
-                    "sirket_ismi"   => $this->input->post("sirket_ismi"),
-                    "hakkimda"      => $this->input->post("hakkimda"),
-                    "misyon"   => $this->input->post("misyon"),
-                    "visyon"   => $this->input->post("visyon"),
-                    "logo"   => $this->input->post("logo"),
-                    "tel_1"   => $this->input->post("tel_1"),
-                    "email"   => $this->input->post("email"),
-                    "facebook"   => $this->input->post("facebook"),
-                    "instagram"   => $this->input->post("instagram"),
-                    "twitter "   => $this->input->post("twitter"),
-                    "adres"   => $this->input->post("adres"),
-                    "map"   => $this->input->post("map"),
-                    
+                    "UstResimYolu"   => $this->input->post("UstResimYolu"),
+                    "AltResimYolu"      => $this->input->post("AltResimYolu"),
+                    "GirisYazisi"   => $this->input->post("GirisYazisi"),
+                    "TeklifSartlari"   => $this->input->post("TeklifSartlari"),                                    
                 ),
                    "ayarlar"
             );
@@ -73,11 +64,11 @@ class iletisim extends CI_Controller {
             // TODO Alert sistemi eklenecek...
             if($update){
 
-                redirect(base_url("admin/ayarlar/iletisim"));
+                redirect(base_url("admin/ayarlar/pdd"));
 
             } else {
 
-                redirect(base_url("admin/ayarlar/iletisim"));
+                redirect(base_url("admin/ayarlar/pdf"));
 
             }
             

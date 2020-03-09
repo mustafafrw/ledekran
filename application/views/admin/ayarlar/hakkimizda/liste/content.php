@@ -2,7 +2,7 @@
 
     <div class="col-md-12">
          <div class="widget p-lg">
-         <form action="<?php echo base_url("admin/ayarlar/update/$items->id"); ?>" method="post">
+         <form action="<?php echo base_url("admin/ayarlar/iletisim/update/$items->id"); ?>" method="post">
        
            
                     <div class="form-group">
@@ -78,6 +78,13 @@
                     <div class="form-group">
                         <label>Adres</label>
                         <input class="form-control" placeholder="Adres" name="adres" value="<?php echo $items->adres;?>">
+                        <?php if(isset($form_error)){ ?>
+                            <small class="pull-right input-form-error"> <?php echo form_error("adres"); ?></small>
+                        <?php } ?>
+                    </div>
+                  <div class="form-group">
+                        <label>Harita</label>
+                        <textarea class="form-control" placeholder="Adres" name="adres"><?php echo $items->map; ?></textarea>
                         <?php if(isset($form_error)){ ?>
                             <small class="pull-right input-form-error"> <?php echo form_error("adres"); ?></small>
                         <?php } ?>

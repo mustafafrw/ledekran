@@ -35,6 +35,7 @@ class Main extends CI_Controller {
             "footer" => $footer,
             "slider" => $slider,
             "ayarlar" => $ayarlar
+               
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
