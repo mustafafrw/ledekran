@@ -72,9 +72,9 @@
                                         <select id="" class="form-control">
                                             
                                        <option value="0">Yükseklik</option>
-                                       <?php for($i=$items["post_data"]->h_start;$i<=$items["post_data"]->h_end;$i+=$items["post_data"]->h_inc){  ?>
-                                                            <option value="<?php echo $i; ?>"><?php echo $i; ?> </option>
-                                                          <?php } ?>
+                                       <?php //for($i=$items["post_data"]->h_start;$i<=$items["post_data"]->h_end;$i+=$items["post_data"]->h_inc){  ?>
+                                                            <option value="<?php //echo $i; ?>"><?php //echo $i; ?> </option>
+                                                          <?php //} ?>
                                                       
                                                     </select>
                                         
@@ -85,9 +85,9 @@
                                         <select id="" class="form-control">
                                             
                                        <option value="0">Genişlik</option>
-                                        <?php for($i=$items["post_data"]->w_start;$i<=$items["post_data"]->w_end;$i+=$items["post_data"]->w_inc){  ?>
-                                                            <option value="<?php echo $i; ?>"><?php echo $i; ?> </option>
-                                                          <?php } ?> 
+                                        <?php //for($i=$items["post_data"]->w_start;$i<=$items["post_data"]->w_end;$i+=$items["post_data"]->w_inc){  ?>
+                                                            <option value="<?php //echo $i; ?>"><?php //echo $i; ?> </option>
+                                                          <?php //} ?> 
                                                       
                                                     </select>
                                         
