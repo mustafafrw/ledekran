@@ -101,12 +101,36 @@ class urunler extends CI_Controller {
                 ),
                 array(
                     "h_start"         => $this->input->post("h_start"),
-                    "h_inc"   => $this->input->post("h_inc"),
                     "h_end"   => $this->input->post("h_end"),
                     "w_start"   => $this->input->post("w_start"),
-                    "w_inc"   => $this->input->post("w_inc"),
                     "w_end"   => $this->input->post("w_end"),
-                   
+                    "panelAdaptorSize"   => $this->input->post("panelAdaptorSize"),
+                    "panelPixels"   => $this->input->post("panelPixels"),
+                    "panelAmount"   => $this->input->post("panelAmount"),
+                    "panelMetrePixel"   => $this->input->post("panelMetrePixel"),
+                    "panelMM"   => $this->input->post("panelMM"),
+                    "adaptorAmount"   => $this->input->post("adaptorAmount"),
+                    "kasaAmount"   => $this->input->post("kasaAmount"),
+                    "pikselOlcusu"   => $this->input->post("pikselOlcusu"),
+                    "ledTuru"   => $this->input->post("ledTuru"),
+                    "goruntuDestegi"   => $this->input->post("goruntuDestegi"),
+                    "kirmiziDalgaBoyu"   => $this->input->post("kirmiziDalgaBoyu"),
+                    "yesilDalgaBoyu"   => $this->input->post("yesilDalgaBoyu"),
+                    "maviDalgaBoyu"   => $this->input->post("maviDalgaBoyu"),
+                    "ledAcisi"   => $this->input->post("ledAcisi"),
+                    "parlaklik"   => $this->input->post("parlaklik"),
+                    "chipMarkasi"   => $this->input->post("chipMarkasi"),
+                    "m2PikselSayisi"   => $this->input->post("m2PikselSayisi"),
+                    "sinyal_iletimi"   => $this->input->post("sinyal_iletimi"),
+                    "calismaOzelligi"   => $this->input->post("calismaOzelligi"),
+                    "calismaSicakligi"   => $this->input->post("calismaSicakligi"),
+                    "calismaGerilimi"   => $this->input->post("calismaGerilimi"),
+                    "minimumGoruntuMesafesi"   => $this->input->post("minimumGoruntuMesafesi"),
+                    "gucKaynagiTipi"   => $this->input->post("gucKaynagiTipi"),
+                    "renkKapasitesi"   => $this->input->post("renkKapasitesi"),
+                    "parlaklikSeviyesi"   => $this->input->post("parlaklikSeviyesi"),
+                    "kabinTipi"   => $this->input->post("kabinTipi"),
+                                    
                 ),
                    "post_data"
             );
@@ -210,12 +234,48 @@ class urunler extends CI_Controller {
                 array(
                     "post_id"         => convertToSEO($this->input->post("title")),
                     "title"         => $this->input->post("title"),
-                    "description"   => $this->input->post("description"),
-                    "category_id"           => convertToSEO($this->input->post("category_id")),
+                    "description"     => $this->input->post("description"),
+                    "category_id"        => convertToSEO($this->input->post("category_id")),
+                    
                 ),
                     "posts"
             );
-
+            $insert_post_data = $this->main_model->add(
+                array(
+                    "post_id"         => convertToSEO($this->input->post("title")),
+                    "h_start"         => $this->input->post("h_start"),
+                    "h_end"         => $this->input->post("h_end"),
+                    "w_start"         => $this->input->post("w_start"),
+                    "w_end"         => $this->input->post("w_end"),
+                    "panelAdaptorSize"         => $this->input->post("panelAdaptorSize"),
+                    "panelPixels"         => $this->input->post("panelPixels"),
+                    "panelAmount"         => $this->input->post("panelAmount"),
+                    "panelMetrePixel"         => $this->input->post("panelMetrePixel"),
+                    "panelMM"         => $this->input->post("panelMM"),
+                    "adaptorAmount"         => $this->input->post("adaptorAmount"),
+                    "kasaAmount"         => $this->input->post("kasaAmount"),
+                    "pikselOlcusu"         => $this->input->post("pikselOlcusu"),
+                    "ledTuru"         => $this->input->post("ledTuru"),
+                    "goruntuDestegi"         => $this->input->post("goruntuDestegi"),
+                    "kirmiziDalgaBoyu"         => $this->input->post("kirmiziDalgaBoyu"),
+                    "yesilDalgaBoyu"         => $this->input->post("yesilDalgaBoyu"),
+                    "maviDalgaBoyu"         => $this->input->post("maviDalgaBoyu"),
+                    "ledAcisi"         => $this->input->post("ledAcisi"),
+                    "parlaklik"         => $this->input->post("parlaklik"),
+                    "chipMarkasi"         => $this->input->post("chipMarkasi"),
+                    "m2PikselSayisi"         => $this->input->post("m2PikselSayisi"),
+                    "sinyal_iletimi"         => $this->input->post("sinyal_iletimi"),
+                    "calismaOzelligi"         => $this->input->post("calismaOzelligi"),
+                    "calismaSicakligi"         => $this->input->post("calismaSicakligi"),
+                    "calismaGerilimi"         => $this->input->post("calismaGerilimi"),
+                    "minimumGoruntuMesafesi"         => $this->input->post("minimumGoruntuMesafesi"),
+                    "gucKaynagiTipi"         => $this->input->post("gucKaynagiTipi"),
+                    "renkKapasitesi"         => $this->input->post("renkKapasitesi"),
+                    "parlaklikSeviyesi"         => $this->input->post("parlaklikSeviyesi"),
+                    "kabinTipi"         => $this->input->post("kabinTipi"),
+                ),
+                    "post_data"
+            );
             // TODO Alert sistemi eklenecek...
             if($insert){
 

@@ -56,6 +56,7 @@
                     <ul class="submenu">
                         <li><a href="<?php echo base_url("admin/ayarlar/iletisim"); ?>"><span class="menu-text">İletişim</span></a></li>
                         <li><a href="<?php echo base_url("admin/ayarlar/pdf"); ?>"><span class="menu-text">Pdf</span></a></li>
+                         <li><a href="<?php echo base_url("admin/ayarlar/hakkimizda"); ?>"><span class="menu-text">Hakkımızda</span></a></li>
                         <li><a href="<?php echo base_url("admin/ayarlar/seo");?>"><span class="menu-text">Seo</span></a></li>
                     </ul>
                  </li>

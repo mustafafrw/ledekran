@@ -13,7 +13,8 @@
 					<hr class="widget-separator">
 					<div class="widget-body">
 						<div class="table-responsive">							
-							<table class="table no-cellborder">
+	
+             <table class="table table-hover table-striped table-bordered content-container">
 	  <thead>
 		<tr>
                     <th>İsim</th>

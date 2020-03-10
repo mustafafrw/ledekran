@@ -54,7 +54,6 @@ class iletisim extends CI_Controller {
                 ),
                 array(
                     "sirket_ismi"   => $this->input->post("sirket_ismi"),
-                    "hakkimda"      => $this->input->post("hakkimda"),
                     "misyon"   => $this->input->post("misyon"),
                     "visyon"   => $this->input->post("visyon"),
                     "logo"   => $this->input->post("logo"),

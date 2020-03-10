@@ -11,14 +11,7 @@
                         <?php if(isset($form_error)){ ?>
                             <small class="pull-right input-form-error"><?php echo form_error("sirket_ismi"); ?></small>
                         <?php } ?>
-                    </div>
-                        <div class="form-group">
-                        <label>Hakkımda</label>
-                        <input class="form-control" placeholder="Hakkımda" name="hakkimda" value="<?php echo $items->hakkimda;?>" >
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("hakkimda"); ?></small>
-                        <?php } ?>
-                        </div>  
+                    </div> 
                         <div class="form-group">
                         <label>Misyon</label>
                         <input class="form-control" placeholder="Misyon" name="misyon" value="<?php echo $items->misyon;?>">
@@ -84,9 +77,9 @@
                     </div>
                   <div class="form-group">
                         <label>Harita</label>
-                        <textarea class="form-control" placeholder="Adres" name="adres"><?php echo $items->map; ?></textarea>
+                        <textarea class="form-control" placeholder="Harita" name="map"><?php echo $items->map; ?></textarea>
                         <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("adres"); ?></small>
+                            <small class="pull-right input-form-error"> <?php echo form_error("map"); ?></small>
                         <?php } ?>
                     </div>
                     <button type="submit" class="btn btn-primary btn-md btn-outline">Güncelle</button>

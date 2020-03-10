@@ -6,8 +6,8 @@
        
            
                    <div class="form-group">
-                        <label>Hakkımızda</label>
-                        <textarea name="description" class="m-0" data-plugin="summernote" data-options="{height: 250}">
+                       <label><b>Hakkımızda Düzenle<b></label>
+                        <textarea name="hakkimda" class="m-0" data-plugin="summernote" data-options="{height: 250}">
                             <?php echo $items->hakkimda; ?>
                         </textarea>
                     </div>

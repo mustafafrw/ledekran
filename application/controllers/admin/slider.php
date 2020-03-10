@@ -20,12 +20,12 @@ class slider extends CI_Controller {
             array(), "id ASC" ,"slider"
                  
         );
+ 
+         
+        $this->image_form();
+       // $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "image";
-        $viewData->items = $items;
-        
-        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+       
         }
         
          public function new_form(){
@@ -85,13 +85,13 @@ class slider extends CI_Controller {
 
             $update = $this->main_model->update(
                 array(
-                    "id"    => $id
+                        "id"  => $id
                 ),
                 array(
-                    "path"         => $this->input->post("path"),
+                    "path"    => $this->input->post("path"),
                     "yazi1"   => $this->input->post("yazi1"),
                     "yazi2"   => $this->input->post("yazi2"),
-                    "picture"   => $this->input->post("picture"),
+                    "picture" => $this->input->post("picture"),
                 ),
                    "slider"
             );
@@ -145,7 +145,7 @@ class slider extends CI_Controller {
                 ),
                     "slider"
             );
-         $post_data = $this->main_model->get(
+         $slider = $this->main_model->get(
                 array(
                     "id"    => $id,
                 ),
