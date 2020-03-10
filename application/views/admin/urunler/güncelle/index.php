@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+     
 <head>
     <?php $this->load->view("includes_admin/head"); ?>
 </head>

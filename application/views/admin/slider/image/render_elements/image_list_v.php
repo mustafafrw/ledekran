@@ -37,7 +37,7 @@
                                     class="btn btn-sm btn-danger btn-outline remove-btn btn-block">
                                     <i class="fa fa-trash"></i> Sil
                                 </button>
-                                <a href="<?php echo base_url("admin/slider/update/$image->id");  ?>"><button type="submit" class="btn btn-primary btn-md btn-outline">Güncelle</button></a>                                                                               
+                                <a href="<?php echo base_url("admin/slider/update_form/$image->id");  ?>"><button type="submit" class="btn btn-primary btn-md btn-outline">Güncelle</button></a>                                                                               
                             </td>                          
                         </tr>
                         <?php } ?>

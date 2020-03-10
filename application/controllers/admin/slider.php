@@ -135,28 +135,12 @@ class slider extends CI_Controller {
         $viewData = new stdClass();
 
          
-         $kategoriListe = $this->main_model->get_all(
-            array(), "id ASC" ,"slider"
-                 
-        );
-          $urun = $this->main_model->get(
-                array(
-                    "id"    => $id,
-                ),
-                    "slider"
-            );
          $slider = $this->main_model->get(
                 array(
                     "id"    => $id,
                 ),
                     "slider"
             );
-        $items = array(
-            "urun" => $urun,
-            "kategori" => $kategoriListe,
-            "post_data" => $post_data,
-            "slider" => $slider
-        );
         
  
                
@@ -165,7 +149,7 @@ class slider extends CI_Controller {
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "güncelle";
-        $viewData->item = $items;
+        $viewData->item = $slider;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 

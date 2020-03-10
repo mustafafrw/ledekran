@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <?php $this->load->view("includes_admin/head"); ?>
 </head>
-
+       
 <body class="menubar-left menubar-unfold menubar-light theme-primary">
 <!--============= start main area -->
 

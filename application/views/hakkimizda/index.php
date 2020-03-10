@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <?php $this->load->view("includes/header"); ?>
-
-
 <!--============= start main area -->
 <body>
     <!-- APP NAVBAR ==========-->
@@ -14,7 +13,7 @@
     <!--========== END app aside -->
 
     <!-- navbar search -->
-    <?php $this->load->view("kategori/content"); ?>
+    <?php $this->load->view("hakkimizda/content"); ?>
     <!-- .navbar-search -->
 
     <!-- APP MAIN ==========-->

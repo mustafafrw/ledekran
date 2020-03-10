@@ -7,24 +7,30 @@
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-body">
-                <form action="<?php echo base_url("admin/slider/update_form/$item->id"); ?>" method="post">
+                <form action="<?php echo base_url("admin/slider/update/$item->id"); ?>" method="post">
                     <div class="form-group">
-                        <label>Başlık</label>
+                        <label>Yol </label>
                         <input class="form-control" placeholder="Başlık" name="title" value="<?php echo $item->path; ?>">
-                        <?php if(isset($form_error)){ ?>
-                            <small class="pull-right input-form-error"> <?php echo form_error("title"); ?></small>
-                        <?php } ?>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>İlk Yazı</label>
+                        <input class="form-control" placeholder="Başlık" name="title" value="<?php echo $item->yazi1; ?>">
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>İkinci Yazı</label>
+                        <input class="form-control" placeholder="Başlık" name="title" value="<?php echo $item->yazi2; ?>">
+                        
+                    </div>
+                      <div class="form-group">
+                        <label>Resim </label>
+                        <input class="form-control" placeholder="Başlık" name="title" value="<?php echo $item->picture; ?>">
+                        
                     </div>
              
-                    <div class="form-group">
-				<label>Lokasyon</label>
-				<div id="control-demo-6">
-				<select class="form-control" name="type">
-					<option value="head">Header</option>
-					<option value="footer">Footer</option>
-				</select>
-			</div>
-		</div>
+             
+                  
                     <button type="submit" class="btn btn-primary btn-md btn-outline">Güncelle</button>
                     <a href="<?php echo base_url("admin/slider"); ?>" class="btn btn-md btn-danger btn-outline">İptal</a>
                 </form>
