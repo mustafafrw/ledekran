@@ -42,6 +42,12 @@ class urun extends CI_Controller {
         $ayarlar = $this->main_model->get(
             array(),"ayarlar"
         );
+        $thumbnail = $this->main_model->get(
+            array("post_id" => $param,"type"=>"kapak"),"pictures"
+        );
+        $pictures = $this->main_model->get_all(
+            array("post_id" => $param,"type"=>"normal"),"pictures_id ASC","pictures"
+        );
         $items = array(
             "ayarlar" => $ayarlar,
             "header" => $header,
@@ -50,7 +56,8 @@ class urun extends CI_Controller {
             "categoryList" =>$kategoriListe,
             "post"         => $posts,
             "post_data" => $posts_data,
-            
+            "thumbnail" => $thumbnail,
+            "pictures"=>$pictures
         );
         
          

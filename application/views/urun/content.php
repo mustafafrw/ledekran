@@ -35,21 +35,21 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="<?php echo $items["post"]->thumbnail?>" alt="">
+                                <img class="product-big-img" src="<?php echo base_url("uploads/").$items["thumbnail"]->path?>" alt="">
                                 <div class="zoom-icon">
                                     <i class="fa fa-search-plus"></i>
                                 </div>
                             </div>
                             <div class="product-thumbs">
                                 <div class="product-thumbs-track ps-slider owl-carousel">
-                                    <div class="pt active" data-imgbigurl="<?php echo $items["post"]->thumbnail?>"><img
-                                            src="<?php echo $items["post"]->thumbnail?>" alt=""></div>
-                                    <div class="pt" data-imgbigurl=""><img
-                                            src="" alt=""></div>
-                                    <div class="pt" data-imgbigurl=""><img
-                                            src="" alt=""></div>
-                                    <div class="pt" data-imgbigurl=""><img
-                                            src="" alt=""></div>
+                                    <div class="pt active" data-imgbigurl="<?php echo base_url("uploads/").$items["thumbnail"]->path?>"><img
+                                            src="<?php echo base_url("uploads/").$items["thumbnail"]->path?>" alt=""></div>
+
+                                            <?php foreach($items["pictures"] as $pic){
+                                            ?>
+                                    <div class="pt" data-imgbigurl="<?php echo base_url("uploads/").$pic->path; ?>"><img
+                                            src="<?php echo base_url("uploads/").$pic->path; ?>" alt=""></div>
+                                            <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -62,38 +62,71 @@
 
                                     
                                 <br><br>
-                                <div class="quantity">
-                                    
-                                    <a href="#" class="primary-btn pd-cart">Teklif Al</a>
-                                </div>
-                                <div class="row responsive-calculate">
-                                    <div class="form-group col-md-4" style="height:40px;">
-                                      
-                                        <select id="" class="form-control">
-                                            
-                                       <option value="0">Yükseklik</option>
-                                       <?php //for($i=$items["post_data"]->h_start;$i<=$items["post_data"]->h_end;$i+=$items["post_data"]->h_inc){  ?>
-                                                            <option value="<?php //echo $i; ?>"><?php //echo $i; ?> </option>
-                                                          <?php //} ?>
-                                                      
-                                                    </select>
+                               <form action="<?php echo base_url("calculate/calc/").$items["post"]->post_id; ?>" method="post">
+                                    <div class="row responsive-calculate">
+                                        <div class="form-group col-md-4" style="height:40px;">
                                         
-                                         
-                                     </div>   
-                                      <div class="form-group col-md-4" style="height:40px;">
-                                      
-                                        <select id="" class="form-control">
+                                            <select id="" class="form-control" name="yukseklik">
+                                                
+                                        <option value="0">Yükseklik</option>
+                                        <?php 
+                                        $h_start = $items["post_data"]->h_start;
+                                        $h_end = $items["post_data"]->h_end;
+                                        $h_start = str_replace(",",".",$h_start);
+                                        $h_end = str_replace(",",".",$h_end);
+
+                                        for($i=$h_start;$i<$h_end;$i+=$h_start){  ?>
+                                                                <option value="<?php echo number_format($i, 2,',','.'); ?>"><?php echo number_format($i, 2,',','.'); ?></option>
+                                                            <?php } ?>
+                                                        
+                                                        </select>
                                             
-                                       <option value="0">Genişlik</option>
-                                        <?php //for($i=$items["post_data"]->w_start;$i<=$items["post_data"]->w_end;$i+=$items["post_data"]->w_inc){  ?>
-                                                            <option value="<?php //echo $i; ?>"><?php //echo $i; ?> </option>
-                                                          <?php //} ?> 
-                                                      
-                                                    </select>
+                                            
+                                        </div>   
+                                        <div class="form-group col-md-4" style="height:40px;">
+
                                         
-                                         
-                                                </div>  
+                                        
+                                            <select id="" class="form-control" name="genislik">
+                                            <option value="0">Genişlik</option>
+                                            <?php 
+                                        $w_start = $items["post_data"]->w_start;
+                                        $w_end = $items["post_data"]->w_end;
+                                        $w_start = str_replace(",",".",$w_start);
+                                        $w_end = str_replace(",",".",$w_end);
+
+                                        for($i=$w_start;$i<$w_end;$i+=$w_start){  ?>
+                                                                <option value="<?php echo number_format($i, 2,',','.'); ?>"><?php echo number_format($i, 2,',','.'); ?></option>
+                                                            <?php } ?>
+                                                        
+                                                        </select>
+                                            
+                                            
+                                                    </div>  
+                                        
                                     
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    </div>
+
+                                    <div class="form-group">
+                                    <div class="quantity">
+                                      <button class="primary-btn pd-cart" type="submit">Teklif Al</button>
+                                    </div>
+                                    </div>
+                                </form>
+
+                                <div class="div">
+                                            <?php 
+                                                if(isset($items["pdfpath"])){
+                                                    //echo $items["pdfpath"];
+                                                   echo '<a href="http://localhost/htmltopdf/'.$items["pdfpath"].'" target="_blank">TEKLİFİNİZ HAZIRLANDI.</a';
+                                                }
+                                            
+                                            ?> 
                                 </div>
                                 <ul class="pd-tags">
                                     <li><span>CATEGORIES</span>: More Accessories, Wallets & Cases</li>

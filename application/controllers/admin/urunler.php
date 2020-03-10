@@ -325,7 +325,6 @@ class urunler extends CI_Controller {
     }
     public function image_upload($post_id){
         
-        echo "SONUÇ OJERFMVPEKRGTOPRMTGHRM";
 
         $file_name = convertToSEO(pathinfo($_FILES["file"]["name"],PATHINFO_FILENAME)).".".pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
          

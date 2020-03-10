@@ -142,10 +142,6 @@ class slider extends CI_Controller {
                     "slider"
             );
         
- 
-               
-        
-        
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "güncelle";

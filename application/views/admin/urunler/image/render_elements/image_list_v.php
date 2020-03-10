@@ -27,7 +27,7 @@
                     <img width="30" src="<?php echo base_url("uploads/$image->path") ?>" alt="<?php echo $image->path; ?>" class="img-responsive">
                                                        
                     </td>
-                            <td><?php echo $image->path; ?></td>
+                            <td><?php $image->path; ?></td>
 
                             <td class="w100 text-center">
                                 <input
