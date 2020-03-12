@@ -50,6 +50,9 @@ class Urun extends CI_Controller {
         $pictures = $this->main_model->get_all(
             array("post_id" => $param,"type"=>"normal"),"pictures_id ASC","pictures"
         );
+        $related = $this->main_model->get_all(
+            array(),"RAND()","posts"
+        );
         $items = array(
             "ayarlar" => $ayarlar,
             "header" => $header,
@@ -59,7 +62,8 @@ class Urun extends CI_Controller {
             "post"         => $posts,
             "post_data" => $posts_data,
             "thumbnail" => $thumbnail,
-            "pictures"=>$pictures
+            "pictures"=>$pictures,
+            "related" => $related
         );
 
 

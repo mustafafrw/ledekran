@@ -20,7 +20,7 @@
     <!-- Product Shop Section Begin -->
     <section class="product-shop spad page-details">
         <div class="container">
-            
+
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-5">
@@ -50,7 +50,7 @@
                                     <h3><?php echo $items["post"]->title ?></h3>
                                 </div>
 
-                                    
+
                                 <br><br>
                                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
@@ -58,12 +58,12 @@
                                         <div id="app">
                                                 <div class="row responsive-calculate">
                                                 <div class="form-group col-md-4" style="height:40px;">
-                                                
+
                                                     <!--<h6>{{yukseklik}}, {{genislik}}, {{post_id}}</h6>-->
                                                     <select id="" class="form-control" name="yukseklik" v-model="yukseklik">
-                                                        
+
                                                 <option value="0">Yükseklik</option>
-                                                <?php 
+                                                <?php
                                                 $h_start = $items["post_data"]->h_start;
                                                 $h_end = $items["post_data"]->h_end;
                                                 $h_start = str_replace(",",".",$h_start);
@@ -72,18 +72,18 @@
                                                 for($i=$h_start;$i<$h_end;$i+=$h_start){  ?>
                                                                         <option value="<?php echo $i ?>"><?php echo number_format($i, 2,',','.'); ?></option>
                                                                     <?php } ?>
-                                                                
+
                                                                 </select>
-                                                    
-                                                    
-                                                </div>   
+
+
+                                                </div>
                                                 <div class="form-group col-md-4" style="height:40px;">
 
-                                                
-                                                    
+
+
                                                     <select id="" class="form-control" name="genislik" v-model="genislik">
                                                     <option value="0">Genişlik</option>
-                                                    <?php 
+                                                    <?php
                                                 $w_start = $items["post_data"]->w_start;
                                                 $w_end = $items["post_data"]->w_end;
                                                 $w_start = str_replace(",",".",$w_start);
@@ -92,18 +92,18 @@
                                                 for($i=$w_start;$i<$w_end;$i+=$w_start){  ?>
                                                                         <option value="<?php echo $i ?>"><?php echo number_format($i, 2,',','.'); ?></option>
                                                                     <?php } ?>
-                                                                
+
                                                                 </select>
-                                                    
-                                                    
-                                                            </div>  
-                                                
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
+
+
+                                                            </div>
+
+
+
+
+
+
+
                                             </div>
 
                                             <div class="form-group">
@@ -147,26 +147,26 @@
                                                                     }
                                                                 }
                                                                 // define data - initial display text and set the text on the button
-                                                                
+
                                                });
 
                                         </script>
-                                    
+
 
                                 <div class="div">
-                                            <?php 
+                                            <?php
                                                 if(isset($items["pdfpath"])){
                                                     //echo $items["pdfpath"];
                                                    echo '<a href="http://localhost/htmltopdf/'.$items["pdfpath"].'" target="_blank">TEKLİFİNİZ HAZIRLANDI.</a';
                                                 }
-                                            
-                                            ?> 
+
+                                            ?>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="product-tab">
                         <div class="tab-item">
                             <ul class="nav" role="tablist">
@@ -185,9 +185,9 @@
                                     <div class="product-content">
                                         <div class="row">
                                             <div class="col-lg-7">
-                                              
+
                                                 <p><?php echo $items["post"]->description?> </p>
-                                                
+
                                             </div>
                                             <div class="col-lg-5">
                                                 <img src="" alt="">
@@ -275,33 +275,31 @@
                 </div>
             </div>
             <div class="row">
+              <?php $counter=0; foreach($items["related"] as $item) {
+                $counter++;
+                if($counter>4)break;
+                  $thumbnail = $this->main_model->get(
+                      array("post_id"=>$item->post_id,"type"=>"kapak"), "pictures"
+                  ); ?>
                 <div class="col-lg-3 col-sm-6">
+
                     <div class="product-item">
                         <div class="pi-pic">
-                            <img src="img/products/women-1.jpg" alt="">
-                            <div class="sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
+                            <img src="<?php echo base_url("uploads/").$thumbnail->path; ?>" alt="">
+                            <div class="sale">İNDİRİM</div>
+
                             <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                <li class="quick-view"><a href="#">Teklif Al</a></li>
                             </ul>
                         </div>
                         <div class="pi-text">
-                            <div class="catagory-name">Coat</div>
                             <a href="#">
-                                <h5>Pure Pineapple</h5>
+                                <h5><?php echo $item->title; ?></h5>
                             </a>
-                            <div class="product-price">
-                                $14.00
-                                <span>$35.00</span>
-                            </div>
                         </div>
                     </div>
                 </div>
-
+              <?php } ?>
             </div>
         </div>
     </div>
