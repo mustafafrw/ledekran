@@ -7,13 +7,14 @@
 
                 <li>
                     <a href="admin">
+                      <a href="<?php echo base_url("admin"); ?>">
                         <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
                         <span class="menu-text">Anasayfa</span>
                     </a>
                 </li>
 
 
-                
+
                 <li>
                     <a href="<?php echo base_url("admin/urunler"); ?>">
                         <i class="menu-icon fa fa-cubes"></i>
@@ -33,13 +34,7 @@
                     </a>
                 </li>
 
-                
-                <li>
-                    <a href="javascript:void(0)">
-                        <i class="menu-icon zmdi zmdi-apps zmdi-hc-lg"></i>
-                        <span class="menu-text">Video Galeri</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="<?php echo base_url("admin/slider") ?>">
                         <i class="menu-icon zmdi zmdi-layers zmdi-hc-lg"></i>

@@ -1,33 +1,33 @@
  <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class kategori extends CI_Controller {
+class Kategori extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "admin/kategori";
       $this->load->model("main_model");
   }
-      
+
         public function index(){
-            
-            
+
+
         $viewData = new stdClass();
-        
+
          $kategoriListe = $this->main_model->get_all(
             array(), "id ASC" ,"category"
-                 
+
         );
-        
+
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-        
+
          public function new_form(){
 
         $viewData = new stdClass();
@@ -37,7 +37,7 @@ class kategori extends CI_Controller {
         $viewData->subViewFolder = "ekle";
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-       
+
     }
       public function delete($id){
 
@@ -138,7 +138,7 @@ class kategori extends CI_Controller {
                 "id"    => $id,
             ),"category"
         );
-        
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "guncelle";
@@ -210,4 +210,3 @@ class kategori extends CI_Controller {
     }
 
     }
-

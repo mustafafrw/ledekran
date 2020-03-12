@@ -39,7 +39,7 @@ class Slider extends CI_Controller {
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
-        $viewData->items = $kategoriListe;
+        $viewData->item = $kategoriListe;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
@@ -63,25 +63,7 @@ class Slider extends CI_Controller {
     }
        public function update($id){
 
-        $this->load->library("form_validation");
 
-        // Kurallar yazilir..
-        $this->form_validation->set_rules("title", "Başlık", "required|trim");
-
-        $this->form_validation->set_message(
-            array(
-                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
-            )
-        );
-
-        // Form Validation Calistirilir..
-        // TRUE - FALSE
-        $validate = $this->form_validation->run();
-
-        // Monitör Askısı
-        // monitor-askisi
-
-        if($validate){
 
             $update = $this->main_model->update(
                 array(
@@ -89,8 +71,8 @@ class Slider extends CI_Controller {
                 ),
                 array(
                     "path"    => $this->input->post("path"),
-                    "yazi1"   => $this->input->post("yazi1"),
-                    "yazi2"   => $this->input->post("yazi2"),
+                    "yazi1"   => $this->input->post("title1"),
+                    "yazi2"   => $this->input->post("title2"),
                     "picture" => $this->input->post("picture"),
                 ),
                    "slider"
@@ -106,23 +88,6 @@ class Slider extends CI_Controller {
                 redirect(base_url("admin/slider"));
 
             }
-
-        } else {
-
-            $viewData = new stdClass();
-
-
-            /** Tablodan Verilerin Getirilmesi.. */
-
-
-            /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
-            $viewData->viewFolder = $this->viewFolder;
-            $viewData->subViewFolder = "güncelle";
-            $viewData->form_error = true;
-            $viewData->item = $item;
-
-            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-        }
 
         // Başarılı ise
         // Kayit işlemi baslar
