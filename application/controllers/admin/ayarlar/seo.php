@@ -13,7 +13,7 @@ class seo extends CI_Controller {
       
         public function index(){
             
-            
+            echo "adfdf";
         $viewData = new stdClass();
         
          $kategoriListe = $this->main_model->get(

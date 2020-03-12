@@ -24,13 +24,18 @@
                     </div>
                     <div class="product-list">
                         <div class="row">
-                            <?php foreach($items["post"] as $item) { ?>
+                            <?php foreach($items["post"] as $item) {
+                                $thumbnail = $this->main_model->get(
+                                    array("post_id"=>$item->post_id,"type"=>"kapak"), "pictures"
+                                );
+                                ?>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <a href="<?php echo base_url("urun/").$item->post_id;?>"><img  src="<?php echo $item->thumbnail; ?>" alt=""></a>
+                                        <a href="<?php echo base_url("urun/").$item->post_id;?>"><img  src="
+                                        <?php if($thumbnail)
+                                        echo base_url("uploads/").$thumbnail->path; ?>" alt=""></a>
                    
-                         
                                         <ul>
                                             <li class="quick-view"><a href="<?php echo base_url("urun/").$item->post_id;?>">Teklif Al</a></li>
                                         </ul>

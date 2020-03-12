@@ -10,7 +10,9 @@
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
-                       <?php echo $items["ayarlar"]->tel_1;  ?>
+                       <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>" target="_blank"><?php echo $items["ayarlar"]->tel_1;  ?></a>
+                       <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>" target="_blank"> | Whatsapp Hattı</a>
+
                     </div>
                 </div>
                 <div class="ht-right">
@@ -23,16 +25,17 @@
             </div>
         </div>
         <div class="container">
+        
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="<?php echo base_url('')?>">
                                 <img src="<?php echo base_url("includes")?>/img/logo.png" alt="Resim bulunamadı">
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-7">
+                    <!--<div class="col-lg-7 col-md-7">
                         <div class="advanced-search">
                             
                             <form action="#" class="input-group">
@@ -40,7 +43,7 @@
                                 <button style="float:right;" type="button"><i class="ti-search"></i></button>
                             </form>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

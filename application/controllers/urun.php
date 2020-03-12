@@ -16,7 +16,8 @@ class urun extends CI_Controller {
     }
 
     function index($param){
-        
+       /* if ($this->input->server('REQUEST_METHOD') == 'GET')
+        echo "selam";*/
         $viewData = new stdClass();
 
         $header = $this->main_model->get_all(
@@ -25,16 +26,17 @@ class urun extends CI_Controller {
         $footer = $this->main_model->get_all(
             array("type" => "footer"), "menu_id ASC","menu"
         );
-        $kategori = $this->main_model->get(
-            array("id" =>$param ), "category"
-                 
-        );
+        
          $kategoriListe = $this->main_model->get_all(
             array(), "id ASC" ,"category"
                  
         );
           $posts = $this->main_model->get(
             array("post_id" => $param),"posts"
+        );
+        $kategori = $this->main_model->get(
+            array("id" =>$posts->category_id ), "category"
+                 
         );
           $posts_data = $this->main_model->get(
             array("post_id" => $param),"post_data"

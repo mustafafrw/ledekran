@@ -19,7 +19,7 @@ class calculate extends CI_Controller {
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         //$viewData->viewFolder = $this->viewFolder;
         //$viewData->items = $items;
-
+       
        // $this->load->view("{$viewData->viewFolder}/index", $viewData);
     }
     public function calc($post_id){
@@ -258,8 +258,8 @@ class calculate extends CI_Controller {
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->items = $items;
    
-      $this->load->view("{$viewData->viewFolder}/index", $viewData,false);
-       
+        $etc = $this->load->view("{$viewData->viewFolder}/index", $viewData,false);
+       echo $etc;
        //echo $render_html;
         //$viewData = new stdClass();
 

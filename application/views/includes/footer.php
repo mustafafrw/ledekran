@@ -7,14 +7,9 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="footer-left">
-                        <div class="footer-logo">
-                            <a href="#"><img src="img/logo.png" alt=""></a>
-                        </div>
                         <ul>
-                            <li>Address: <?php echo $items["ayarlar"]->adres;  ?></li>
+                            <li>Addres: <?php echo $items["ayarlar"]->adres;  ?></li>
                             <li>Telefon: <?php echo $items["ayarlar"]->tel_1;  ?></li>
-                            <li>Misyon:   <?php echo $items["ayarlar"]->misyon;  ?></li>
-                            <li>Visyon:   <?php echo $items["ayarlar"]->visyon;  ?></li>
                             
                         </ul>
                         <div class="footer-social">
@@ -31,7 +26,7 @@
 
                         <?php foreach($items["footer"] as $item) { ?>
                         
-                        <li><a href="<?php echo $item->url;?>"><?php echo $item->title?></a></li>                     
+                        <li><a href="<?php echo base_url('').$item->url ?>"><?php echo $item->title?></a></li>                     
                         
                          <?php } ?>
                         </ul>

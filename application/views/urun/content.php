@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./shop.html">Shop</a>
-                        <span>Detail</span>
+                        <a href="./home.html"><i class="fa fa-home"></i> Anasayfa</a>
+                        <a href="<?php echo base_url("kategori/").$items["categoryInfo"]->id ?>"><?php echo $items["categoryInfo"]->title ?></a>
+                        <span><?php echo $items["post"]->title ?></span>
                     </div>
                 </div>
             </div>
@@ -20,20 +20,10 @@
     <!-- Product Shop Section Begin -->
     <section class="product-shop spad page-details">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Kategoriler</h4>
-                        <ul class="filter-catagories">
-                             <?php foreach($items["categoryList"] as $item) { ?>
-                            <li><a href="<?php echo base_url("kategori/").$item->id; ?>"><?php echo $item->title; ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
+            
+                <div class="col-lg-12">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <div class="product-pic-zoom">
                                 <img class="product-big-img" src="<?php echo base_url("uploads/").$items["thumbnail"]->path?>" alt="">
                                 <div class="zoom-icon">
@@ -53,71 +43,115 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
                             <div class="product-details">
                                 <div class="pd-title">
-                                    <span>oranges</span>
+                                    <span><?php echo $items["categoryInfo"]->title ?></span>
                                     <h3><?php echo $items["post"]->title ?></h3>
                                 </div>
 
                                     
                                 <br><br>
-                               <form action="<?php echo base_url("calculate/calc/").$items["post"]->post_id; ?>" method="post">
-                                    <div class="row responsive-calculate">
-                                        <div class="form-group col-md-4" style="height:40px;">
-                                        
-                                            <select id="" class="form-control" name="yukseklik">
+                               <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
+                                        <div id="app">
+                                                <div class="row responsive-calculate">
+                                                <div class="form-group col-md-4" style="height:40px;">
                                                 
-                                        <option value="0">Yükseklik</option>
-                                        <?php 
-                                        $h_start = $items["post_data"]->h_start;
-                                        $h_end = $items["post_data"]->h_end;
-                                        $h_start = str_replace(",",".",$h_start);
-                                        $h_end = str_replace(",",".",$h_end);
-
-                                        for($i=$h_start;$i<$h_end;$i+=$h_start){  ?>
-                                                                <option value="<?php echo number_format($i, 2,',','.'); ?>"><?php echo number_format($i, 2,',','.'); ?></option>
-                                                            <?php } ?>
+                                                    <!--<h6>{{yukseklik}}, {{genislik}}, {{post_id}}</h6>-->
+                                                    <select id="" class="form-control" name="yukseklik" v-model="yukseklik">
                                                         
-                                                        </select>
-                                            
-                                            
-                                        </div>   
-                                        <div class="form-group col-md-4" style="height:40px;">
+                                                <option value="0">Yükseklik</option>
+                                                <?php 
+                                                $h_start = $items["post_data"]->h_start;
+                                                $h_end = $items["post_data"]->h_end;
+                                                $h_start = str_replace(",",".",$h_start);
+                                                $h_end = str_replace(",",".",$h_end);
 
-                                        
-                                        
-                                            <select id="" class="form-control" name="genislik">
-                                            <option value="0">Genişlik</option>
-                                            <?php 
-                                        $w_start = $items["post_data"]->w_start;
-                                        $w_end = $items["post_data"]->w_end;
-                                        $w_start = str_replace(",",".",$w_start);
-                                        $w_end = str_replace(",",".",$w_end);
+                                                for($i=$h_start;$i<$h_end;$i+=$h_start){  ?>
+                                                                        <option value="<?php echo $i ?>"><?php echo number_format($i, 2,',','.'); ?></option>
+                                                                    <?php } ?>
+                                                                
+                                                                </select>
+                                                    
+                                                    
+                                                </div>   
+                                                <div class="form-group col-md-4" style="height:40px;">
 
-                                        for($i=$w_start;$i<$w_end;$i+=$w_start){  ?>
-                                                                <option value="<?php echo number_format($i, 2,',','.'); ?>"><?php echo number_format($i, 2,',','.'); ?></option>
-                                                            <?php } ?>
-                                                        
-                                                        </select>
+                                                
+                                                    
+                                                    <select id="" class="form-control" name="genislik" v-model="genislik">
+                                                    <option value="0">Genişlik</option>
+                                                    <?php 
+                                                $w_start = $items["post_data"]->w_start;
+                                                $w_end = $items["post_data"]->w_end;
+                                                $w_start = str_replace(",",".",$w_start);
+                                                $w_end = str_replace(",",".",$w_end);
+
+                                                for($i=$w_start;$i<$w_end;$i+=$w_start){  ?>
+                                                                        <option value="<?php echo $i ?>"><?php echo number_format($i, 2,',','.'); ?></option>
+                                                                    <?php } ?>
+                                                                
+                                                                </select>
+                                                    
+                                                    
+                                                            </div>  
+                                                
                                             
                                             
-                                                    </div>  
-                                        
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    </div>
+                                            
+                                            
+                                            
+                                            
+                                            </div>
 
-                                    <div class="form-group">
-                                    <div class="quantity">
-                                      <button class="primary-btn pd-cart" type="submit">Teklif Al</button>
-                                    </div>
-                                    </div>
-                                </form>
+                                            <div class="form-group">
+                                                <div class="quantity">
+                                                <button class="primary-btn pd-cart" @click="myreq()">Teklif Al</button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" v-if="status">
+                                            <h3>Hesaplanıyor...</h3>
+                                            </div>
+                                            <div class="form-group" v-if="response">
+                                                <h3>Toplam Fiyat: {{response.tutar}}$</h3>
+                                                <br>
+                                                <a :href="'http://localhost/htmltopdf/'+response.pdf" target="_blank"><button class="primary-btn pd-cart">Teklifi Görüntüle</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+
+
+                                                new Vue({
+                                                                el: "#app",
+                                                                data:{
+                                                                    yukseklik:0,
+                                                                    genislik:0,
+                                                                    post_id:"<?php echo $items["post"]->post_id ?>",
+                                                                    response:"",
+                                                                    status:false
+                                                                },
+                                                                methods:{
+                                                                    myreq(){
+                                                                        this.status=true;
+                                                                        var r = this;
+                                                                        axios.get('http://localhost/htmltopdf/?postid='+this.post_id+'&genislik='+this.genislik+'&yukseklik='+this.yukseklik)
+                                                                            .then(response => {
+                                                                            r.status=false;
+                                                                            r.response = response.data;
+                                                                            }).catch(error => {
+                                                                            console.log(response)
+                                                                        })
+                                                                    }
+                                                                }
+                                                                // define data - initial display text and set the text on the button
+                                                                
+                                               });
+
+                                        </script>
+                                    
 
                                 <div class="div">
                                             <?php 
@@ -128,21 +162,11 @@
                                             
                                             ?> 
                                 </div>
-                                <ul class="pd-tags">
-                                    <li><span>CATEGORIES</span>: More Accessories, Wallets & Cases</li>
-                                    <li><span>TAGS</span>: Clothing, T-shirt, Woman</li>
-                                </ul>
-                                <div class="pd-share">
-                                    <div class="p-code">Sku : 00012</div>
-                                    <div class="pd-social">
-                                        <a href="#"><i class="ti-facebook"></i></a>
-                                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                                        <a href="#"><i class="ti-linkedin"></i></a>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
+                    
                     <div class="product-tab">
                         <div class="tab-item">
                             <ul class="nav" role="tablist">

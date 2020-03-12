@@ -26,6 +26,7 @@
     <!--========== END app main -->
 
     <?php $this->load->view("includes/site_script"); ?>
+   
 
 </body>
 </html>

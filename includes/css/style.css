@@ -4003,10 +4003,10 @@ ol {
 /* Tablet Device: 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-	.header-top .ht-right .login-panel {
+	.header-top .ht-left .login-panel {
 		padding-left: 10px;
 	}
-	.header-top .ht-right .top-social {
+	.header-top .ht-left .top-social {
 		padding-right: 10px;
 	}
 	.header-top .ht-left .mail-service {
@@ -4074,15 +4074,15 @@ ol {
 		float: none;
 		text-align: center;
 	}
-	.header-top .ht-left,
+	.header-top .ht-right,
 	.header-top .top-social {
 		display: none;
 	}
-	.header-top .ht-right .login-panel {
+	.header-top .ht-left .login-panel {
 		padding-top: 9px;
 		padding-bottom: 7px;
 	}
-	.header-top .ht-right .lan-selector {
+	.header-top .ht-left .lan-selector {
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
