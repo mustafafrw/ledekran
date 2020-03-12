@@ -1,30 +1,30 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class calculate extends CI_Controller {
+class Calculate extends CI_Controller {
   public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "urun";
       $this->load->model("main_model");
   }
 
     public function index()
-	{   
+	{
         /*$viewData = new stdClass();
-           
+
         $items = array();
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         //$viewData->viewFolder = $this->viewFolder;
         //$viewData->items = $items;
-       
+
        // $this->load->view("{$viewData->viewFolder}/index", $viewData);
     }
     public function calc($post_id){
 
-       
+
 
         $inpPanelHeight = "16";
         $inpPanelWidth = "32";
@@ -43,7 +43,7 @@ class calculate extends CI_Controller {
         $panelHeightSize = $slcPanelHeight / $inpPanelHeight;
         $panelWidthSize = $slcPanelWidth / $inpPanelWidth;
 
-       
+
 
         $usingPanelSize = $panelHeightSize * $panelWidthSize;
         //echo "PanelSize: ".$usingPanelSize."<br>";
@@ -53,7 +53,7 @@ class calculate extends CI_Controller {
 
         $adaptorSize = $usingPanelSize / $inpPanelAdaptorSize;
         $adaptorSize = floor($adaptorSize);
-        
+
 
         if ($adaptorSize < 1) {
             $adaptorSize = 1;
@@ -142,7 +142,7 @@ class calculate extends CI_Controller {
     public function cardAmount($slcPanelHeight, $slcPanelWidth, $inpPixels, $cardType, $usingPanelSize, $adaptorSize, $cardPrice, $kasaMetre, $rPanel, $pixelCalculate, $inpPanelHeight, $inpPanelWidth, $inpPanelMM, $cardId,$post_id) {
 
         //card fiyatını çek
-        
+
         $cardPrice = $this->getCardPrice($cardType);;
        // echo "kart price".$cardPrice;
         //cardPrice = parseFloat(cardPrice) + parseFloat(rPanel);
@@ -159,7 +159,7 @@ class calculate extends CI_Controller {
             calculatePanel($slcPanelHeight, $slcPanelWidth, inpPixels, cartType, usingPanelSize, adaptorSize, cardPrice, kasaMetre, rPanel, tvProductAmount, pixelCalculate, inpPanelHeight, inpPanelWidth, inpPanelMM);
             $('#canliYayin').hide();
         }*/
-    } 
+    }
     public function calculatePanel($slcPanelHeight, $slcPanelWidth, $inpPixels, $cartType, $usingPanelSize, $adaptorSize, $cardPrice, $kasaMetre, $rPanel, $tvProductAmount, $pixelCalculate, $inpPanelHeight, $inpPanelWidth, $inpPanelMM,$post_id) {
         $kasaPrice = 40; // inpKasaAmount
 
@@ -177,7 +177,7 @@ class calculate extends CI_Controller {
         $pdfModulCalc = $inpPanelHeight." x ".$inpPanelWidth." cm";
         $pdfModulPixel = $inpPixels." Piksel";
         $url = 'http://localhost/htmltopdf/index.php';
-   
+
         $fields = array(
             'postid'=>$post_id,
             'totalAmount' => $totalAmount,
@@ -203,7 +203,7 @@ class calculate extends CI_Controller {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
         $result = curl_exec($ch);
-        
+
         curl_close($ch);
         $pdfPath = $result;
 
@@ -220,11 +220,11 @@ class calculate extends CI_Controller {
         );
         $kategori = $this->main_model->get(
             array("id" =>$post_id ), "category"
-                 
+
         );
          $kategoriListe = $this->main_model->get_all(
             array(), "id ASC" ,"category"
-                 
+
         );
           $posts = $this->main_model->get(
             array("post_id" => $post_id),"posts"
@@ -253,11 +253,11 @@ class calculate extends CI_Controller {
             "pictures"=>$pictures,
             "pdfpath" =>$pdfPath
         );
-        
-         
+
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->items = $items;
-   
+
         $etc = $this->load->view("{$viewData->viewFolder}/index", $viewData,false);
        echo $etc;
        //echo $render_html;

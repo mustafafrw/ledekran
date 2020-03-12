@@ -1,34 +1,34 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ayarlar extends CI_Controller {
+class Ayarlar extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "admin/ayarlar/iletisim";
       $this->load->model("main_model");
   }
-      
+
         public function index(){
-            
-            
+
+
         $viewData = new stdClass();
-        
+
          $kategoriListe = $this->main_model->get(
             array(),"ayarlar"
-                 
+
         );
-        
+
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-        
-     
+
+
       public function delete($id){
 
         $delete = $this->main_model->delete(
@@ -47,7 +47,7 @@ class ayarlar extends CI_Controller {
 
     }
        public function update($id){
-           
+
             $update = $this->main_model->update(
                 array(
                     "id"    => $id
@@ -64,11 +64,11 @@ class ayarlar extends CI_Controller {
                     "instagram"   => $this->input->post("instagram"),
                     "twitter "   => $this->input->post("twitter"),
                     "adres"   => $this->input->post("adres"),
-                    
+
                 ),
                    "ayarlar"
             );
-             
+
             // TODO Alert sistemi eklenecek...
             if($update){
 
@@ -79,9 +79,9 @@ class ayarlar extends CI_Controller {
                 redirect(base_url("admin/ayarlar"));
 
             }
-            
+
 
     }
-      
-   
+
+
 }

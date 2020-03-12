@@ -1,48 +1,48 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class urunler extends CI_Controller {
+class Urunler extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "admin/urunler";
       $this->load->model("main_model");
   }
-      
+
         public function index(){
-            
-            
+
+
         $viewData = new stdClass();
-        
+
          $kategoriListe = $this->main_model->get_all(
             array(), "post_id ASC" ,"posts"
-                 
+
         );
-        
+
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-        
+
          public function new_form(){
 
         $viewData = new stdClass();
-         
+
          $kategoriListe = $this->main_model->get_all(
             array(), "id ASC" ,"category"
-                 
+
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "ekle";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-       
+
     }
       public function delete($post_id){
 
@@ -130,7 +130,7 @@ class urunler extends CI_Controller {
                     "renkKapasitesi"   => $this->input->post("renkKapasitesi"),
                     "parlaklikSeviyesi"   => $this->input->post("parlaklikSeviyesi"),
                     "kabinTipi"   => $this->input->post("kabinTipi"),
-                                    
+
                 ),
                    "post_data"
             );
@@ -150,9 +150,9 @@ class urunler extends CI_Controller {
 
             $viewData = new stdClass();
 
-        
+
             /** Tablodan Verilerin Getirilmesi.. */
-            
+
 
             /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
             $viewData->viewFolder = $this->viewFolder;
@@ -173,10 +173,10 @@ class urunler extends CI_Controller {
 
         $viewData = new stdClass();
 
-         
+
          $kategoriListe = $this->main_model->get_all(
             array(), "id ASC" ,"category"
-                 
+
         );
           $urun = $this->main_model->get(
                 array(
@@ -195,11 +195,11 @@ class urunler extends CI_Controller {
             "kategori" => $kategoriListe,
              "post_data" => $post_data
         );
-        
- 
-               
-        
-        
+
+
+
+
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "güncelle";
@@ -236,7 +236,7 @@ class urunler extends CI_Controller {
                     "title"         => $this->input->post("title"),
                     "description"     => $this->input->post("description"),
                     "category_id"        => convertToSEO($this->input->post("category_id")),
-                    
+
                 ),
                     "posts"
             );
@@ -295,7 +295,7 @@ class urunler extends CI_Controller {
             $viewData->viewFolder = $this->viewFolder;
             $viewData->subViewFolder = "ekle";
             $viewData->form_error = true;
-            
+
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
 
@@ -312,42 +312,42 @@ class urunler extends CI_Controller {
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "image";
 
-        
+
         $viewData->item_images = $this->main_model->get_all(
           array(
-           "post_id" => $post_id,       
+           "post_id" => $post_id,
           ),"pictures_id ASC","pictures"
-        ); 
-   
+        );
+
        $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
-       
+
        echo $render_html;
     }
     public function image_upload($post_id){
-        
+
 
         $file_name = convertToSEO(pathinfo($_FILES["file"]["name"],PATHINFO_FILENAME)).".".pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
-         
+
         $config["allowed_types"] = "jpg|jpeg|png";
         $config["upload_path"]   = "uploads";
-        $config["file_name"]     =$file_name;  
-        
+        $config["file_name"]     =$file_name;
+
         $this->load->library("upload", $config);
-            
+
         $upload = $this->upload->do_upload("file");
-        
+
         if($upload){
-            
+
           $uploaded_file = $this->upload->data("file_name");
-          
+
           $this->main_model->add(
         array(
             "post_id"=> $post_id,
               "path"   => $uploaded_file,
               "type"  => "normal",
         ),"pictures"
-            ); 
-         
+            );
+
         } else {
             echo "islem basarisiz";
         }
@@ -391,7 +391,7 @@ class urunler extends CI_Controller {
           ),"pictures"
         );
 
-          
+
       // TODO Alert Sistemi Eklenecek...
       if($delete){
 

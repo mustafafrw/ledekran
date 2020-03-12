@@ -1,33 +1,33 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class menu extends CI_Controller {
+class Menu extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "admin/menu";
       $this->load->model("main_model");
   }
-      
+
         public function index(){
-            
-            
+
+
         $viewData = new stdClass();
-        
+
          $kategoriListe = $this->main_model->get_all(
             array(), "menu_id ASC" ,"menu"
-                 
+
         );
-        
+
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-        
+
          public function new_form(){
 
             $viewData = new stdClass();
@@ -37,7 +37,7 @@ class menu extends CI_Controller {
             $viewData->subViewFolder = "ekle";
 
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-       
+
          }
       public function delete($id){
 
@@ -138,7 +138,7 @@ class menu extends CI_Controller {
                 "menu_id"    => $id,
             ),"menu"
         );
-        
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "update";
@@ -209,4 +209,3 @@ class menu extends CI_Controller {
     }
 
     }
-

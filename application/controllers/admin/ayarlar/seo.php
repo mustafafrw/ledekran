@@ -1,34 +1,34 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class seo extends CI_Controller {
+class Seo extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "admin/ayarlar/seo";
       $this->load->model("main_model");
   }
-      
+
         public function index(){
-            
+
             echo "adfdf";
         $viewData = new stdClass();
-        
+
          $kategoriListe = $this->main_model->get(
             array(),"ayarlar"
-                 
+
         );
-        
+
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-        
-     
+
+
       public function delete($id){
 
         $delete = $this->main_model->delete(
@@ -47,7 +47,7 @@ class seo extends CI_Controller {
 
     }
        public function update($id){
-           
+
             $update = $this->main_model->update(
                 array(
                     "id"    => $id
@@ -70,7 +70,7 @@ class seo extends CI_Controller {
                 ),
                    "ayarlar"
             );
-             
+
             // TODO Alert sistemi eklenecek...
             if($update){
 
@@ -81,9 +81,9 @@ class seo extends CI_Controller {
                 redirect(base_url("admin/ayarlar/seo"));
 
             }
-            
+
 
     }
-      
-   
+
+
 }

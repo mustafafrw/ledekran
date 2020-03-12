@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class hakkimizda extends CI_Controller {
+class Hakkimizda extends CI_Controller {
   public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "hakkimizda";
       $this->load->model("main_model");
@@ -13,9 +13,9 @@ class hakkimizda extends CI_Controller {
 
     public function index()
 	{
-  
+
           $viewData = new stdClass();
-           
+
         /** Tablodan Verilerin Getirilmesi.. */
        //veri tabanından type ı head olanları getirdik menu_id ve menu parametereleri
         $header = $this->main_model->get_all(
@@ -38,6 +38,6 @@ class hakkimizda extends CI_Controller {
 
         $this->load->view("{$viewData->viewFolder}/index", $viewData);
 	}
-        
-        
+
+
 }

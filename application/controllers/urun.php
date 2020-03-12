@@ -1,16 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class urun extends CI_Controller {
+class Urun extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "urun";
       $this->load->model("main_model");
   }
-    
+
     function _remap($param) {
         $this->index($param);
     }
@@ -26,17 +26,17 @@ class urun extends CI_Controller {
         $footer = $this->main_model->get_all(
             array("type" => "footer"), "menu_id ASC","menu"
         );
-        
+
          $kategoriListe = $this->main_model->get_all(
             array(), "id ASC" ,"category"
-                 
+
         );
           $posts = $this->main_model->get(
             array("post_id" => $param),"posts"
         );
         $kategori = $this->main_model->get(
             array("id" =>$posts->category_id ), "category"
-                 
+
         );
           $posts_data = $this->main_model->get(
             array("post_id" => $param),"post_data"
@@ -61,15 +61,15 @@ class urun extends CI_Controller {
             "thumbnail" => $thumbnail,
             "pictures"=>$pictures
         );
-        
-         
+
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->items = $items;
         $this->load->view("{$viewData->viewFolder}/index", $viewData);
     }
 
-    
-        
-    
+
+
+
 }

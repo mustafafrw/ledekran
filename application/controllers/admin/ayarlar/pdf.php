@@ -1,33 +1,33 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class pdf extends CI_Controller {
+class Pdf extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "admin/ayarlar/pdf";
       $this->load->model("main_model");
   }
-      
+
         public function index(){
-            
-            
+
+
         $viewData = new stdClass();
-        
+
          $kategoriListe = $this->main_model->get(
             array(),"ayarlar"
-                 
+
         );
-        
+
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
-        
+
        public function delete($id){
 
         $delete = $this->main_model->delete(
@@ -45,9 +45,9 @@ class pdf extends CI_Controller {
         }
 
     }
- 
+
        public function update($id){
-           
+
             $update = $this->main_model->update(
                 array(
                     "id"    => $id
@@ -56,11 +56,11 @@ class pdf extends CI_Controller {
                     "UstResimYolu"   => $this->input->post("UstResimYolu"),
                     "AltResimYolu"      => $this->input->post("AltResimYolu"),
                     "GirisYazisi"   => $this->input->post("GirisYazisi"),
-                    "TeklifSartlari"   => $this->input->post("TeklifSartlari"),                                    
+                    "TeklifSartlari"   => $this->input->post("TeklifSartlari"),
                 ),
                    "ayarlar"
             );
-             
+
             // TODO Alert sistemi eklenecek...
             if($update){
 
@@ -71,9 +71,9 @@ class pdf extends CI_Controller {
                 redirect(base_url("admin/ayarlar/pdf"));
 
             }
-            
+
 
     }
-      
-   
+
+
 }

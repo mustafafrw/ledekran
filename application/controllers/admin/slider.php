@@ -1,48 +1,48 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class slider extends CI_Controller {
+class Slider extends CI_Controller {
     public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "admin/slider";
       $this->load->model("main_model");
   }
-      
+
         public function index(){
-            
-            
+
+
         $viewData = new stdClass();
-        
+
          $items= $this->main_model->get_all(
             array(), "id ASC" ,"slider"
-                 
+
         );
- 
-         
+
+
         $this->image_form();
        // $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-        
-       
+
+
         }
-        
+
          public function new_form(){
 
         $viewData = new stdClass();
-         
+
          $kategoriListe = $this->main_model->get_all(
             array(), "id ASC" ,"slider"
-                 
+
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
         $viewData->items = $kategoriListe;
-        
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
-       
+
     }
       public function delete($id){
 
@@ -95,7 +95,7 @@ class slider extends CI_Controller {
                 ),
                    "slider"
             );
-                       
+
             // TODO Alert sistemi eklenecek...
             if($update){
 
@@ -111,9 +111,9 @@ class slider extends CI_Controller {
 
             $viewData = new stdClass();
 
-        
+
             /** Tablodan Verilerin Getirilmesi.. */
-            
+
 
             /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
             $viewData->viewFolder = $this->viewFolder;
@@ -134,14 +134,14 @@ class slider extends CI_Controller {
 
         $viewData = new stdClass();
 
-         
+
          $slider = $this->main_model->get(
                 array(
                     "id"    => $id,
                 ),
                     "slider"
             );
-        
+
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "güncelle";
@@ -201,7 +201,7 @@ class slider extends CI_Controller {
             $viewData->viewFolder = $this->viewFolder;
             $viewData->subViewFolder = "ekle";
             $viewData->form_error = true;
-            
+
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
 
@@ -218,32 +218,32 @@ class slider extends CI_Controller {
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "image";
 
-        
+
         $viewData->item_images = $this->main_model->get_all(
-          array(      
+          array(
           ),"id ASC","slider"
-        ); 
-   
+        );
+
        $render_html = $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/render_elements/image_list_v", $viewData,true);
-       
+
        echo $render_html;
     }
     public function image_upload(){
-        
+
         $file_name = convertToSEO(pathinfo($_FILES["file"]["name"],PATHINFO_FILENAME)).".".pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
-         
+
         $config["allowed_types"] = "jpg|jpeg|png";
         $config["upload_path"]   = "uploads";
-        $config["file_name"]     =$file_name;  
-        
+        $config["file_name"]     =$file_name;
+
         $this->load->library("upload", $config);
-            
+
         $upload = $this->upload->do_upload("file");
-        
+
         if($upload){
-            
+
           $uploaded_file = $this->upload->data("file_name");
-          
+
           $this->main_model->add(
         array(
               "id"    => $id,
@@ -252,8 +252,8 @@ class slider extends CI_Controller {
               "yazi2"  => "yazi2",
               "picture"  => "picture",
         ),"slider"
-            ); 
-         
+            );
+
         } else {
             echo "islem basarisiz";
         }
@@ -296,7 +296,7 @@ class slider extends CI_Controller {
           ),"slider"
         );
 
-          
+
       // TODO Alert Sistemi Eklenecek...
       if($delete){
 

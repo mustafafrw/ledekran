@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class iletisim extends CI_Controller {
+class Iletisim extends CI_Controller {
   public $viewFolder="";
-  
+
   public function __construct() {
-      
+
       parent::__construct();
       $this->viewFolder = "iletisim";
       $this->load->model("main_model");
@@ -13,9 +13,9 @@ class iletisim extends CI_Controller {
 
     public function index()
 	{
-  
+
           $viewData = new stdClass();
-           
+
         /** Tablodan Verilerin Getirilmesi.. */
        //veri tabanından type ı head olanları getirdik menu_id ve menu parametereleri
         $header = $this->main_model->get_all(
@@ -30,7 +30,7 @@ class iletisim extends CI_Controller {
         $items = array(
             "header" => $header,
             "footer" => $footer,
-            "ayarlar" =>$iletisim   
+            "ayarlar" =>$iletisim
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
@@ -38,13 +38,13 @@ class iletisim extends CI_Controller {
 
         $this->load->view("{$viewData->viewFolder}/index", $viewData);
 	}
-        
+
           public function save(){
 
         $this->load->library("form_validation");
 
         // Kurallar yazilir..
-        
+
 
             $insert = $this->main_model->add(
                 array(
@@ -70,7 +70,7 @@ class iletisim extends CI_Controller {
             }
 
             $viewData = new stdClass();
-           
+
         /** Tablodan Verilerin Getirilmesi.. */
        //veri tabanından type ı head olanları getirdik menu_id ve menu parametereleri
         $header = $this->main_model->get_all(
@@ -85,7 +85,7 @@ class iletisim extends CI_Controller {
         $items = array(
             "header" => $header,
             "footer" => $footer,
-            "ayarlar" =>$iletisim   
+            "ayarlar" =>$iletisim
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
