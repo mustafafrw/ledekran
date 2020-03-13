@@ -17,7 +17,6 @@ class Kategori extends CI_Controller {
 
     function index($param){
         $viewData = new stdClass();
-        echo $param;
         $header = $this->main_model->get_all(
             array("type" => "head"), "menu_id ASC","menu"
         );

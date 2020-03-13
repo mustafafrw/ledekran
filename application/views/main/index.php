@@ -16,6 +16,8 @@
 
     <!-- navbar search -->
     <?php $this->load->view("main/slider"); ?>
+    <?php $this->load->view("main/banner"); ?>
+    <?php $this->load->view("main/related"); ?>
     <!-- .navbar-search -->
 
     <!-- APP MAIN ==========-->

@@ -285,11 +285,11 @@
 
                     <div class="product-item">
                         <div class="pi-pic">
-                            <img src="<?php echo base_url("uploads/").$thumbnail->path; ?>" alt="">
+                            <a href="<?php echo base_url('urun/').$item->post_id; ?>"><img src="<?php echo base_url("uploads/").$thumbnail->path; ?>" alt=""></a>
                             <div class="sale">İNDİRİM</div>
 
                             <ul>
-                                <li class="quick-view"><a href="#">Teklif Al</a></li>
+                                <li class="quick-view"><a href="<?php echo base_url('urun/').$item->post_id; ?>">Teklif Al</a></li>
                             </ul>
                         </div>
                         <div class="pi-text">

@@ -30,11 +30,15 @@ class Main extends CI_Controller {
         $ayarlar = $this->main_model->get(
             array(), "ayarlar"
         );
+        $kategori = $this->main_model->get_all(
+            array(),"id ASC", "category"
+        );
         $items = array(
             "header" => $header,
             "footer" => $footer,
             "slider" => $slider,
-            "ayarlar" => $ayarlar
+            "ayarlar" => $ayarlar,
+            "kategori" =>$kategori
                
         );
         /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
