@@ -11,9 +11,6 @@
                             <a href="<?php echo $item->path;?>" class="primary-btn">Teklif Al</a>
                         </div>
                     </div>
-                    <div class="off-card">
-                        <h2>İNDİRİM <span>%20</span></h2>
-                    </div>
                 </div>
             </div>
             <?php } ?>

@@ -9,7 +9,7 @@
                     <div class="footer-left">
                         <ul>
                             <li>Addres: <?php echo $items["ayarlar"]->adres;  ?></li>
-                            <li>Telefon: <?php echo $items["ayarlar"]->tel_1;  ?></li>
+                            <li>Telefon: <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>" target="_blank"><?php echo $items["ayarlar"]->tel_1; ?></a></li>
                             
                         </ul>
                         <div class="footer-social">

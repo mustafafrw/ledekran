@@ -10,8 +10,7 @@
                     </div>
                     <div class="phone-service">
                         <i class=" fa fa-phone"></i>
-                       <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>" target="_blank"><?php echo $items["ayarlar"]->tel_1;  ?></a>
-                       <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>" target="_blank"> | Whatsapp Hattı</a>
+                       <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>" target="_blank"> 7/24 Whatsapp Hattı</a>
 
                     </div>
                 </div>

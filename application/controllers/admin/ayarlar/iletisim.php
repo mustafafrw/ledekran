@@ -20,14 +20,14 @@ class Iletisim extends CI_Controller {
 
         $viewData = new stdClass();
 
-         $kategoriListe = $this->main_model->get(
+         $ayarlar = $this->main_model->get(
             array(),"ayarlar"
 
         );
 
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "liste";
-        $viewData->items = $kategoriListe;
+        $viewData->items = $ayarlar;
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }

@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Anasayfa</a>
+                        <a href="<?php echo base_url(); ?>"><i class="fa fa-home"></i> Anasayfa</a>
                         <a href="<?php echo base_url("kategori/").$items["categoryInfo"]->id ?>"><?php echo $items["categoryInfo"]->title ?></a>
                         <span><?php echo $items["post"]->title ?></span>
                     </div>
@@ -105,17 +105,23 @@
 
 
                                             </div>
-
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="videoprc">
+                                                    <label class="custom-control-label" for="customCheck1">Video Processor Ekle</label>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <div class="quantity">
                                                 <button class="primary-btn pd-cart" @click="myreq()">Teklif Al</button>
                                                 </div>
                                             </div>
+                                            
                                             <div class="form-group" v-if="status">
                                             <h3>Hesaplanıyor...</h3>
                                             </div>
                                             <div class="form-group" v-if="response">
-                                                <h3>Toplam Fiyat: {{response.tutar}}$</h3>
+                                                <h3>Toplam Fiyat: {{parseFloat(response.tutar).toFixed(2)}}$</h3>
                                                 <br>
                                                 <a :href="'http://localhost/htmltopdf/'+response.pdf" target="_blank"><button class="primary-btn pd-cart">Teklifi Görüntüle</button></a>
                                                 </div>
@@ -131,13 +137,16 @@
                                                                     genislik:0,
                                                                     post_id:"<?php echo $items["post"]->post_id ?>",
                                                                     response:"",
-                                                                    status:false
+                                                                    status:false,
+                                                                    videoprc:false
                                                                 },
                                                                 methods:{
                                                                     myreq(){
                                                                         this.status=true;
                                                                         var r = this;
-                                                                        axios.get('http://localhost/htmltopdf/?postid='+this.post_id+'&genislik='+this.genislik+'&yukseklik='+this.yukseklik)
+                                                                        var gyukseklik = Math.floor(this.yukseklik);
+                                                                        var ggenislik = Math.floor(this.genislik);
+                                                                        axios.get('http://localhost/htmltopdf/?postid='+this.post_id+'&genislik='+ggenislik+'&yukseklik='+gyukseklik+'&videoprc='+this.videoprc)
                                                                             .then(response => {
                                                                             r.status=false;
                                                                             r.response = response.data;
@@ -173,9 +182,6 @@
                                 <li>
                                     <a class="active" data-toggle="tab" href="#tab-1" role="tab">Açıklama</a>
                                 </li>
-                                <li>
-                                    <a data-toggle="tab" href="#tab-2" role="tab">Özellikler</a>
-                                </li>
 
                             </ul>
                         </div>
@@ -195,65 +201,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
-                                    <div class="specification-table">
-                                        <table>
-                                            <tr>
-                                                <td class="p-catagory">Customer Rating</td>
-                                                <td>
-                                                    <div class="pd-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <span>(5)</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Price</td>
-                                                <td>
-                                                    <div class="p-price">$495.00</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Add To Cart</td>
-                                                <td>
-                                                    <div class="cart-add">+ add to cart</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Availability</td>
-                                                <td>
-                                                    <div class="p-stock">22 in stock</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Weight</td>
-                                                <td>
-                                                    <div class="p-weight">1,3kg</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Size</td>
-                                                <td>
-                                                    <div class="p-size">Xxl</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Color</td>
-                                                <td><span class="cs-color"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Sku</td>
-                                                <td>
-                                                    <div class="p-code">00012</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
+                   
 
                             </div>
                         </div>

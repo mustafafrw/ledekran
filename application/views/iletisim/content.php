@@ -31,15 +31,19 @@
                                 <p><?php echo $items["ayarlar"]->adres; ?></p>
                             </div>
                         </div>
+                        <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>">
                         <div class="cw-item">
                             <div class="ci-icon">
-                                <i class="ti-mobile"></i>
+                                <i class="fa fa-whatsapp"></i>
                             </div>
+                           
                             <div class="ci-text">
                                 <span>Telefon:</span>
-                                <p><?php echo $items["ayarlar"]->tel_1; ?></p>
+                                <a href="https://api.whatsapp.com/send?phone=<?php echo $items["ayarlar"]->tel_1;  ?>" target="_blank"><p><?php echo $items["ayarlar"]->tel_1; ?></p></a>
+
                             </div>
                         </div>
+                        </a>
                         <div class="cw-item">
                             <div class="ci-icon">
                                 <i class="ti-email"></i>
